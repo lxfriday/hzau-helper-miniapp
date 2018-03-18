@@ -4,6 +4,6 @@
  * @author lxfriday
  */
 export default {
-  hzauColor: '#006d33',
+  hzauColor: '#006d33', // 主颜色
 };
 
