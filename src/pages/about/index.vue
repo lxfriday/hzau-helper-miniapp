@@ -1,18 +1,24 @@
 <template>
-  <div class="container" @click="clickHandle('test click', $event)">
-    <p>map</p>
+  <div class="container">
+    <div class="userinfo">
+      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
+      <div class="userinfo-nickname">
+        <card :text="userInfo.nickName"></card>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+/**
+ * 关于
+ */
 import card from '@/components/card';
 
 export default {
   data() {
     return {
-      motto: 'Hello World',
       userInfo: {},
-      userInfoString: '',
     };
   },
 
@@ -21,10 +27,6 @@ export default {
   },
 
   methods: {
-    bindViewTap() {
-      const url = '../logs/logs';
-      wx.navigateTo({ url });
-    },
     getUserInfo() {
       // 调用登录接口
       wx.login({
@@ -32,14 +34,10 @@ export default {
           wx.getUserInfo({
             success: (res) => {
               this.userInfo = res.userInfo;
-              this.userInfoString = JSON.stringify({ a: 1 });
             },
           });
         },
       });
-    },
-    clickHandle(msg, ev) {
-      console.log('clickHandle:', msg, ev);
     },
   },
 
@@ -51,6 +49,10 @@ export default {
 </script>
 
 <style scoped>
+ .container {
+   padding: 200rpx 0;
+ }
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -66,24 +68,5 @@ export default {
 
 .userinfo-nickname {
   color: #aaa;
-}
-
-.usermotto {
-  margin-top: 150px;
-}
-
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-
-.counter {
-  display: inline-block;
-  margin: 10px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
 }
 </style>

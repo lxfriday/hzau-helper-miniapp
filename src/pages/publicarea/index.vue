@@ -1,6 +1,6 @@
 <template>
   <div class="container" @click="clickHandle('test click', $event)">
-    <p>map</p>
+    <p>publicarea</p>
   </div>
 </template>
 
@@ -12,7 +12,6 @@ export default {
     return {
       motto: 'Hello World',
       userInfo: {},
-      userInfoString: '',
     };
   },
 
@@ -32,7 +31,6 @@ export default {
           wx.getUserInfo({
             success: (res) => {
               this.userInfo = res.userInfo;
-              this.userInfoString = JSON.stringify({ a: 1 });
             },
           });
         },
