@@ -6,6 +6,18 @@
         <card :text="userInfo.nickName"></card>
       </div>
     </div>
+    <div class="items-wrapper weui-cells weui-cells_after-title">
+      <div class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <div style="display: inline-block; vertical-align: middle">华中农业大学助手</div>
+        </div>
+      </div>
+      <div class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <div style="display: inline-block; vertical-align: middle">关于</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -53,8 +65,15 @@ export default {
    padding: 200rpx 0;
  }
 
+ .items-wrapper {
+   flex: 1;
+   margin-top: 50rpx;
+ }
+
 .userinfo {
   display: flex;
+  width: 100%;
+  height: 350rpx;
   flex-direction: column;
   align-items: center;
 }

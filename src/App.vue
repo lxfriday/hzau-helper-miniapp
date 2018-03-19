@@ -16,9 +16,14 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  /*align-items: center;*/
+  /*justify-content: space-between;*/
   box-sizing: border-box;
+}
+/* 去掉滚动轴 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 /* this rule will be remove */
 * {
