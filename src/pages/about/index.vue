@@ -11,12 +11,14 @@
         <div class="weui-cell__bd">
           <div style="display: inline-block; vertical-align: middle">华中农业大学助手</div>
         </div>
+        <div class="weui-cell__ft">V0.0.1</div>
       </div>
-      <div class="weui-cell weui-cell_access">
+      <a href="/pages/author/author" class="weui-cell weui-cell_access">
         <div class="weui-cell__bd">
-          <div style="display: inline-block; vertical-align: middle">关于</div>
+          <div style="display: inline-block; vertical-align: middle">作者</div>
         </div>
-      </div>
+        <div class="weui-cell__ft weui-cell__ft_in-access"></div>
+      </a>
     </div>
   </div>
 </template>
@@ -45,6 +47,7 @@ export default {
         success: () => {
           wx.getUserInfo({
             success: (res) => {
+              console.log(res.userInfo);
               this.userInfo = res.userInfo;
             },
           });
@@ -79,8 +82,8 @@ export default {
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
+  width: 180rpx;
+  height: 180rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
