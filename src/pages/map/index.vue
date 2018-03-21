@@ -3,63 +3,36 @@
     <map
       id="map"
       show-location
+      @controltap="controltap"
+      :controls="controls"
       :markers="markers"
       :polyline="polyline"
       :style="'width: 100%; height: '+ windowHeight +'px;'"
-      v-if="locationInfo"
       :longitude="locationInfo.longitude"
-      :latitude="locationInfo.latitude"
-    >
+      :latitude="locationInfo.latitude">
     </map>
   </div>
 </template>
 
 <script>
 import card from '@/components/card';
-import MAP_INFO from '../../../static/config/mapInfo';
+import MARKERS, { administrativeBuildingPos } from '../../../static/config/mapInfo';
 
-const canteenPosition = MAP_INFO.canteenPosition; // 餐厅
-const supermarketPosition = MAP_INFO.supermarketPosition; // 超市
-const bankPosition = MAP_INFO.bankPosition; // 银行
-
-const markers = [
-  ...canteenPosition.pos.map((v, i) => ({
-    iconPath: canteenPosition.icon,
-    id: i,
-    latitude: v.pos[0],
-    longitude: v.pos[1],
-    width: 20,
-    height: 20,
-  })),
-  ...supermarketPosition.pos.map((v, i) => ({
-    iconPath: supermarketPosition.icon,
-    id: canteenPosition.length + i,
-    latitude: v.pos[0],
-    longitude: v.pos[1],
-    width: 20,
-    height: 20,
-  })),
-  ...bankPosition.pos.map((v, i) => ({
-    iconPath: bankPosition.icon,
-    id: canteenPosition.length + supermarketPosition.length + i,
-    latitude: v.pos[0],
-    longitude: v.pos[1],
-    width: 20,
-    height: 20,
-  })),
-];
 
 export default {
   data() {
     return {
       userInfo: {},
       windowHeight: 0, // 可视区域的高度，除去了导航条和底部的tab栏
-      // locationInfo: {
-      //   latitude: 0,
-      //   longitude: 0,
-      // },
-      locationInfo: null,
-      markers,
+      // 系统默认定位到行政楼
+      locationInfo: {
+        latitude: administrativeBuildingPos[0],
+        longitude: administrativeBuildingPos[1],
+      },
+      markers: MARKERS(),
+      // markersShowType: 'all', // 默认是查看所有类型的场所， 'all' => 所有 || 'single' => '某种'
+      controls: [],
+      // 点击控制键
     };
   },
 
@@ -68,6 +41,7 @@ export default {
   },
 
   methods: {
+    // 获取用户信息
     getUserInfo() {
       // 调用登录接口
       wx.login({
@@ -87,6 +61,27 @@ export default {
       wx.getSystemInfo({
         success: (res) => {
           this.windowHeight = res.windowHeight;
+          this.controls = [{
+            id: 998,
+            iconPath: '/static/images/map_control.png',
+            position: {
+              left: res.windowWidth - 40,
+              top: res.windowHeight - 40,
+              width: 30,
+              height: 30,
+            },
+            clickable: true,
+          }, {
+            id: 999,
+            iconPath: '/static/images/map_showall.png',
+            position: {
+              left: 10,
+              top: res.windowHeight - 40,
+              width: 30,
+              height: 30,
+            },
+            clickable: true,
+          }];
         },
       });
     },
@@ -103,6 +98,21 @@ export default {
           };
         },
       });
+    },
+    // 点击右下角的控制键
+    controltap(e) {
+      // 只查看某种类别的
+      if (e.mp.controlId === 998) {
+        wx.showActionSheet({
+          itemList: ['食堂', '超市', '银行', '车站', '学校机构', '教学楼'],
+          success: (res) => {
+            this.markers = MARKERS(res.tapIndex);
+          },
+        });
+      } else {
+        // 查看所有的
+        this.markers = MARKERS();
+      }
     },
   },
 
