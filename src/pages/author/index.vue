@@ -15,14 +15,15 @@
  * 关于
  */
 import card from '@/components/card';
+import AUTHOR_INFO from '../../../static/config/authorInfo';
 
 export default {
   data() {
     return {
       authorInfo: {
-        avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/3X0WGwRv8SBVfhTy4R3D2J8JExWBKJ5M7FYICWPjfRXgw5wDLe9eqoVvpaQkOVveILuDviaKYQtMXL8khG95CAQ/0',
-        nickName: '刘星',
-        classInfo: '机械设计制造及其自动化15级学生',
+        avatarUrl: AUTHOR_INFO.avatarUrl,
+        nickName: AUTHOR_INFO.nickName,
+        classInfo: AUTHOR_INFO.classInfo,
       },
     };
   },

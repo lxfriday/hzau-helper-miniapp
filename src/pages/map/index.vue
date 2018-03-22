@@ -4,7 +4,7 @@
       <div class="selector-wrapper">
         <div class="selector-left-wrapper">
           <image class="selector-left-location" :src="selectedTypeIcon"></image>
-          <span class="selector-center-text">{{ selectedTypeName }}</span>
+          <text class="selector-center-text">{{ selectedTypeName }}</text>
         </div>
         <image class="selector-right-arrow" src="/static/images/arrow-right.png"></image>
       </div>
