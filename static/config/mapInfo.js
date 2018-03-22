@@ -13,6 +13,17 @@
 // 行政楼的位置
 export const administrativeBuildingPos = [30.476505, 114.356078];
 
+export const typeArray = ['餐厅', '超市', '银行', '车站', '学校部门', '教学楼', '显示所有地点']; // 所有类型的地点的中文名
+export const typeIconArray = [
+  '/static/images/map_canteen.png',
+  '/static/images/map_supermarket.png',
+  '/static/images/map_bank.png',
+  '/static/images/map_busstation.png',
+  '/static/images/map_flag.png',
+  '/static/images/map_teachingbuilding.png',
+  '/static/images/location.png',
+]; // 类型对应的图标
+
 const defaultPos = {
   // 餐厅
   canteenPosition: {
@@ -85,10 +96,18 @@ const defaultPos = {
       {
         pos: [30.473310, 114.364361],  // latitude(唯独), longitude(精度)
         name: '银行',
-      },
-      {
+      }, {
         pos: [30.475890, 114.353036],
         name: '银行',
+      }, {
+        pos: [30.474961, 114.350408],
+        name: '银行',
+      }, {
+        pos: [30.475825, 114.349394],
+        name: '银行',
+      }, {
+        pos: [30.476459, 114.361051],
+        name: 'ATM',
       },
     ],
   },
@@ -167,7 +186,7 @@ const defaultPos = {
 export default function (index = null) {
   let counter = 0;
   const markers = [];
-  if (index) {
+  if (typeof index === 'number') {
     Object.keys(defaultPos).forEach((v, i) => {
       if (i === index) {
         defaultPos[v].pos.forEach((vv) => {

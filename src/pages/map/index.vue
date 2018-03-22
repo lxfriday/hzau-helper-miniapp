@@ -1,13 +1,20 @@
 <template>
   <div class="container">
+    <picker @change="bindTypeSelectorChange" :range="typeArray">
+      <div class="selector-wrapper">
+        <div class="selector-left-wrapper">
+          <image class="selector-left-location" :src="selectedTypeIcon"></image>
+          <span class="selector-center-text">{{ selectedTypeName }}</span>
+        </div>
+        <image class="selector-right-arrow" src="/static/images/arrow-right.png"></image>
+      </div>
+    </picker>
     <map
       id="map"
       show-location
-      @controltap="controltap"
-      :controls="controls"
       :markers="markers"
       :polyline="polyline"
-      :style="'width: 100%; height: '+ windowHeight +'px;'"
+      :style="'width: 100%; height: '+ mapHeight +'px;'"
       :longitude="locationInfo.longitude"
       :latitude="locationInfo.latitude">
     </map>
@@ -16,14 +23,13 @@
 
 <script>
 import card from '@/components/card';
-import MARKERS, { administrativeBuildingPos } from '../../../static/config/mapInfo';
-
+import MARKERS, { administrativeBuildingPos, typeArray, typeIconArray } from '../../../static/config/mapInfo';
 
 export default {
   data() {
     return {
       userInfo: {},
-      windowHeight: 0, // 可视区域的高度，除去了导航条和底部的tab栏
+      mapHeight: 0, // 可视区域的高度，除去了导航条和底部的tab栏
       // 系统默认定位到行政楼
       locationInfo: {
         latitude: administrativeBuildingPos[0],
@@ -31,7 +37,9 @@ export default {
       },
       markers: MARKERS(),
       // markersShowType: 'all', // 默认是查看所有类型的场所， 'all' => 所有 || 'single' => '某种'
-      controls: [],
+      typeArray,
+      selectedTypeName: '所有地点',
+      selectedTypeIcon: typeIconArray[typeIconArray.length - 1],
       // 点击控制键
     };
   },
@@ -41,6 +49,16 @@ export default {
   },
 
   methods: {
+    bindTypeSelectorChange(e) {
+      const index = +e.mp.detail.value;
+      if (index === typeArray.length - 1) {
+        this.markers = MARKERS();
+      } else {
+        this.markers = MARKERS(index);
+      }
+      this.selectedTypeName = typeArray[e.mp.detail.value];
+      this.selectedTypeIcon = typeIconArray[e.mp.detail.value];
+    },
     // 获取用户信息
     getUserInfo() {
       // 调用登录接口
@@ -60,28 +78,7 @@ export default {
     getWindowInfo() {
       wx.getSystemInfo({
         success: (res) => {
-          this.windowHeight = res.windowHeight;
-          this.controls = [{
-            id: 998,
-            iconPath: '/static/images/map_control.png',
-            position: {
-              left: res.windowWidth - 40,
-              top: res.windowHeight - 40,
-              width: 30,
-              height: 30,
-            },
-            clickable: true,
-          }, {
-            id: 999,
-            iconPath: '/static/images/map_showall.png',
-            position: {
-              left: 10,
-              top: res.windowHeight - 40,
-              width: 30,
-              height: 30,
-            },
-            clickable: true,
-          }];
+          this.mapHeight = res.windowHeight - 30;
         },
       });
     },
@@ -99,21 +96,6 @@ export default {
         },
       });
     },
-    // 点击右下角的控制键
-    controltap(e) {
-      // 只查看某种类别的
-      if (e.mp.controlId === 998) {
-        wx.showActionSheet({
-          itemList: ['食堂', '超市', '银行', '车站', '学校机构', '教学楼'],
-          success: (res) => {
-            this.markers = MARKERS(res.tapIndex);
-          },
-        });
-      } else {
-        // 查看所有的
-        this.markers = MARKERS();
-      }
-    },
   },
 
   created() {
@@ -126,5 +108,41 @@ export default {
 </script>
 
 <style scoped>
+  .selector-wrapper {
+    flex: 1;
+    height: 80rpx;
+    padding: 0 16rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #efefef;
+  }
+  .selector-left-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .selector-left-location {
+    width: 40rpx;
+    height: 40rpx;
+  }
+  .selector-right-arrow {
+    width: 40rpx;
+    height: 40rpx;
+  }
+  .selector-center-text {
+    margin-left: 20rpx;
+    font-size: 30rpx;
+  }
+  .option-buttons {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 35rpx;
+    width: 100%;
+  }
 
 </style>
