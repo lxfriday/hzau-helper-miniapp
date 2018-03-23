@@ -23,7 +23,7 @@
 
 <script>
 import card from '@/components/card';
-import MARKERS, { administrativeBuildingPos, typeArray, typeIconArray } from '../../../static/config/mapInfo';
+import MARKERS, { administrativeBuildingPos, typeArray, typeIconArray } from '../../config/mapInfo';
 
 export default {
   data() {

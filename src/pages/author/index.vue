@@ -15,7 +15,7 @@
  * 关于
  */
 import card from '@/components/card';
-import AUTHOR_INFO from '../../../static/config/authorInfo';
+import AUTHOR_INFO from '../../config/authorInfo';
 
 export default {
   data() {

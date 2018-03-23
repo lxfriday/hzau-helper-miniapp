@@ -15,9 +15,9 @@ export default {
     // 页面前带有 ^ 符号的，会被编译成首页，其他页面可以选填，我们会自动把 webpack entry 里面的入口页面加进去
     pages: [
       // tab
-      'pages/map/map',
-      '^pages/searchinfo/searchinfo',
-      'pages/publicarea/publicarea',
+      '^pages/map/map',
+      // '^pages/searchinfo/searchinfo',
+      // 'pages/publicarea/publicarea',
       'pages/about/about',
 
       // other pages
@@ -41,18 +41,18 @@ export default {
           iconPath: 'static/images/tab/map.png',
           selectedIconPath: 'static/images/tab/map_selected.png',
         },
-        {
-          pagePath: 'pages/searchinfo/searchinfo',
-          text: '信息查询',
-          iconPath: 'static/images/tab/searchinfo.png',
-          selectedIconPath: 'static/images/tab/searchinfo_selected.png',
-        },
-        {
-          pagePath: 'pages/publicarea/publicarea',
-          text: '信息发布',
-          iconPath: 'static/images/tab/publicarea.png',
-          selectedIconPath: 'static/images/tab/publicarea_selected.png',
-        },
+        // {
+        //   pagePath: 'pages/searchinfo/searchinfo',
+        //   text: '信息查询',
+        //   iconPath: 'static/images/tab/searchinfo.png',
+        //   selectedIconPath: 'static/images/tab/searchinfo_selected.png',
+        // },
+        // {
+        //   pagePath: 'pages/publicarea/publicarea',
+        //   text: '信息发布',
+        //   iconPath: 'static/images/tab/publicarea.png',
+        //   selectedIconPath: 'static/images/tab/publicarea_selected.png',
+        // },
         {
           pagePath: 'pages/about/about',
           text: '关于',
