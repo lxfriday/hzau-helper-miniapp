@@ -8,6 +8,9 @@ export default {
 
     console.log('app created and cache logs by setStorageSync');
   },
+  // 只有App.vue才有这个方法
+  onLaunch() {
+  },
 };
 </script>
 
