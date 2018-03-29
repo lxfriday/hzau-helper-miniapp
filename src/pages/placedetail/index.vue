@@ -1,22 +1,19 @@
 <template>
   <div class="container">
-    <div class="title-wrapper">
-      <text class="title">
-        {{ name }}
-      </text>
+    <div class="title">
+      {{ name }}
     </div>
     <div class="intro-wrapper">
-      <text class="intro">
-        {{ introduction }}
-      </text>
+      {{ introduction }}
+    </div>
+    <div class="notitext">
+      图片查看
     </div>
     <div class="images-wrapper">
       <image v-for="(image, index) in images" :src="image" :key="index" @click="handlePreviewImage(index)" mode="aspectFill"></image>
     </div>
-    <div class="mapnoti-wrapper">
-      <text class="notitext">
-        位置查看
-      </text>
+    <div class="notitext">
+      位置查看
     </div>
     <div class="map-wrapper">
       <map
@@ -80,22 +77,15 @@
     font-size: 16px;
   }
 
-  .title-wrapper {
+  .title {
     border-left: 4px solid #006d33;
     padding-left: 5px;
-
-    .title {
-      font-weight: bold;
-      font-size: 20px;
-    }
+    font-weight: bold;
+    font-size: 20px;
   }
 
   .intro-wrapper {
-    margin: 12px 0 20px;
-
-    .intro {
-      line-height: 22px;
-    }
+    margin: 12px 0 12px;
   }
 
   .images-wrapper {
@@ -108,15 +98,12 @@
     }
   }
 
-  .mapnoti-wrapper {
-    margin: 10px 0;
+  .notitext {
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 14px;
     border-left: 3px solid #ff0000;
     padding-left: 5px;
-
-    .notitext {
-      font-weight: bold;
-      font-size: 14px;
-    }
   }
 
   .map-wrapper {

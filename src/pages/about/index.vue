@@ -11,7 +11,7 @@
         <div class="weui-cell__bd">
           <div style="display: inline-block; vertical-align: middle">华中农业大学助手</div>
         </div>
-        <div class="weui-cell__ft">V0.0.1</div>
+        <div class="weui-cell__ft">{{ versionInfo.version }}</div>
       </div>
       <a href="/pages/author/author" class="weui-cell weui-cell_access">
         <div class="weui-cell__bd">
@@ -28,11 +28,14 @@
  * 关于
  */
 import card from '@/components/card';
+import CONFIG_VERSION from '../../config/version';
 
 export default {
   data() {
     return {
+      isUserInfoAvailable: false, // 是否获取了用户的信息
       userInfo: {},
+      versionInfo: CONFIG_VERSION,
     };
   },
 
@@ -47,8 +50,8 @@ export default {
         success: () => {
           wx.getUserInfo({
             success: (res) => {
-              console.log(res.userInfo);
               this.userInfo = res.userInfo;
+              this.isUserInfoAvailable = true;
             },
           });
         },
@@ -60,31 +63,41 @@ export default {
     // 调用应用实例的方法获取全局数据
     this.getUserInfo();
   },
+
+  mounted() {
+    // 如果没有获取到用户的信息，则显示其他内容
+    if (!this.isUserInfoAvailable) {
+      this.userInfo = {
+        avatarUrl: 'http://qiniu1.lxfriday.xyz/hzau-helper/crying-3.png',
+        nickName: '匿名用户',
+      };
+    }
+  },
 };
 </script>
 
 <style scoped>
  .container {
-   padding: 200rpx 0;
+   padding: 100px 0;
  }
 
  .items-wrapper {
    flex: 1;
-   margin-top: 50rpx;
+   margin-top: 25px;
  }
 
 .userinfo {
   display: flex;
   width: 100%;
-  height: 350rpx;
+  height: 175px;
   flex-direction: column;
   align-items: center;
 }
 
 .userinfo-avatar {
-  width: 180rpx;
-  height: 180rpx;
-  margin: 20rpx;
+  width: 90px;
+  height: 90px;
+  margin: 10px;
   border-radius: 50%;
 }
 

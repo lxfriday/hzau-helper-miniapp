@@ -48,12 +48,12 @@ export default {
           iconPath: 'static/images/tab/places.png',
           selectedIconPath: 'static/images/tab/places_selected.png',
         },
-        {
-          pagePath: 'pages/publicarea/publicarea',
-          text: '信息发布',
-          iconPath: 'static/images/tab/publicarea.png',
-          selectedIconPath: 'static/images/tab/publicarea_selected.png',
-        },
+        // {
+        //   pagePath: 'pages/publicarea/publicarea',
+        //   text: '信息发布',
+        //   iconPath: 'static/images/tab/publicarea.png',
+        //   selectedIconPath: 'static/images/tab/publicarea_selected.png',
+        // },
         {
           pagePath: 'pages/about/about',
           text: '关于',
