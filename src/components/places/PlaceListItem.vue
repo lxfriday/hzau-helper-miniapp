@@ -1,6 +1,6 @@
 <template>
   <div  @click="clickItem" class="item-wrapper">
-    <image class="left-image" :src="imgPath" />
+    <image class="left-image" :src="imgPath" mode="aspectFill" />
     <div class="right-wrapper">
       <text class="name">{{ name }}</text>
       <image class="type-image" :src="typeImage" />
