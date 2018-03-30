@@ -5,8 +5,6 @@ export default {
     const logs = wx.getStorageSync('logs') || [];
     logs.unshift(Date.now());
     wx.setStorageSync('logs', logs);
-
-    console.log('app created and cache logs by setStorageSync');
   },
   // 只有App.vue才有这个方法
   onLaunch() {

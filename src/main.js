@@ -16,18 +16,18 @@ export default {
     pages: [
       // tab
       'pages/map/map',
-      '^pages/places/places',
-      'pages/publicarea/publicarea',
+      'pages/places/places',
+      '^pages/publicarea/publicarea',
       'pages/about/about',
 
       // other pages
       'pages/author/author',
-      // 'pages/placedetail/placedetail',
+      'pages/placedetail/placedetail',
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#006d33',
-      navigationBarTitleText: '华中农大助手',
+      navigationBarTitleText: '华中农业大学助手',
       navigationBarTextStyle: 'white',
     },
     tabBar: {
@@ -48,12 +48,12 @@ export default {
           iconPath: 'static/images/tab/places.png',
           selectedIconPath: 'static/images/tab/places_selected.png',
         },
-        // {
-        //   pagePath: 'pages/publicarea/publicarea',
-        //   text: '信息发布',
-        //   iconPath: 'static/images/tab/publicarea.png',
-        //   selectedIconPath: 'static/images/tab/publicarea_selected.png',
-        // },
+        {
+          pagePath: 'pages/publicarea/publicarea',
+          text: '信息发布',
+          iconPath: 'static/images/tab/publicarea.png',
+          selectedIconPath: 'static/images/tab/publicarea_selected.png',
+        },
         {
           pagePath: 'pages/about/about',
           text: '关于',
