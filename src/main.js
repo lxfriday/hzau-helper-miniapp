@@ -50,9 +50,15 @@ export default {
         },
         {
           pagePath: 'pages/publicarea/publicarea',
-          text: '信息发布',
+          text: '广场', // 公共区域
           iconPath: 'static/images/tab/publicarea.png',
           selectedIconPath: 'static/images/tab/publicarea_selected.png',
+        },
+        {
+          pagePath: 'pages/schoolservice/schoolservice',
+          text: '校内服务', // 接入学生相关的服务
+          iconPath: 'static/images/tab/school.png',
+          selectedIconPath: 'static/images/tab/school_selected.png',
         },
         {
           pagePath: 'pages/about/about',
