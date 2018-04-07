@@ -18,6 +18,14 @@
         </div>
       </div>
     </div>
+    <div class="list-wrapper">
+      <list-item></list-item>
+      <list-item></list-item>
+      <list-item></list-item>
+      <list-item></list-item>
+      <list-item></list-item>
+      <list-item></list-item>
+    </div>
   </div>
 </template>
 
@@ -27,12 +35,18 @@
    * @time 2018/04/07
    * @author lxfriday
    */
+  import ListItem from '../../components/publicarea/ListItem';
+
   export default {
     data() {
       return {
         isUserInfoAvailable: false, // 是否获取了用户的信息
         userInfo: {},
       };
+    },
+
+    components: {
+      ListItem,
     },
 
     methods: {

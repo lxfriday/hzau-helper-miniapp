@@ -11,6 +11,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "moment": "^2.22.0",
     "mpvue": "^1.0.5",
     "query-string": "^6.0.0",
     "vuex": "^2.3.1"
@@ -45,6 +46,7 @@
     "http-proxy-middleware": "^0.17.3",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
+    "mockjs": "^1.0.1-beta3",
     "mpvue-loader": "^1.0.7",
     "mpvue-template-compiler": "^1.0.5",
     "mpvue-webpack-target": "^1.0.0",
