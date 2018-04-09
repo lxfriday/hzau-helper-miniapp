@@ -1,11 +1,13 @@
 <template>
   <div class="container">
+    <a class="release-button" href="/pages/releasepublicinfo/releasepublicinfo">
+      <img src="/static/images/add.png" class="release-img" >
+    </a>
     <div class="top-wrapper">
-      <image
+      <img
         class="top-image"
         mode="aspectFill"
         src="/static/images/publicarea/image4.jpg">
-      </image>
       <div class="top-content">
         <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
         <div class="tab-wrapper">
@@ -19,15 +21,18 @@
       </div>
     </div>
     <div class="list-wrapper">
-      <list-item></list-item>
-      <list-item></list-item>
-      <list-item></list-item>
-      <list-item></list-item>
-      <list-item></list-item>
-      <list-item></list-item>
+      <list-item
+        v-for="(item, index) in listData"
+        :avatarUrl="item.avatarUrl"
+        :nickname="item.nickname"
+        :releasedTime="item.releasedTime"
+        :content="item.content"
+        :images="item.images"
+        :key="index"/>
     </div>
   </div>
 </template>
+
 
 <script>
   /**
@@ -36,12 +41,14 @@
    * @author lxfriday
    */
   import ListItem from '../../components/publicarea/ListItem';
+  import mockData from '../../mock/publicarea/mock';
 
   export default {
     data() {
       return {
         isUserInfoAvailable: false, // 是否获取了用户的信息
         userInfo: {},
+        listData: [], // 列表的數據
       };
     },
 
@@ -77,57 +84,78 @@
           nickName: '匿名用户',
         };
       }
+      this.listData = mockData();
     },
   };
 </script>
 
 <style scoped lang="less">
-  .top-wrapper {
+  .container {
     position: relative;
-    width: 100%;
-    height: 190px;
+    .release-button {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 999;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
 
-    .top-image {
-      width: 100%;
-      height: 190px;
-      opacity: .93;
-    }
-
-    .top-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: flex;
-      flex-direction: column;
-
-      .userinfo-avatar {
-        width: 75px;
-        height: 75px;
-        margin: 25px;
+      .release-img {
+        width: 45px;
+        height: 45px;
         border-radius: 50%;
       }
+    }
 
-      .tab-wrapper {
+    .top-wrapper {
+      position: relative;
+      width: 100%;
+      height: 220px;
+
+      .top-image {
         width: 100%;
+        height: 220px;
+        opacity: .93;
+      }
+
+      .top-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
         display: flex;
-        background-color: rgba(255,255,255,.25);
+        flex-direction: column;
 
-        .tab {
-          flex: 1;
-          padding: 5px 0;
-          text-align: center;
+        .userinfo-avatar {
+          width: 75px;
+          height: 75px;
+          margin: 25px;
+          border-radius: 50%;
+        }
 
-          a {
+        .tab-wrapper {
+          width: 100%;
+          display: flex;
+          background-color: rgba(255,255,255,.25);
+
+          .tab {
             flex: 1;
-            color: #ffffff;
-            font-size: 18px;
-            font-weight: 500;
+            padding: 5px 0;
+            text-align: center;
+
+            a {
+              flex: 1;
+              color: #ffffff;
+              font-size: 18px;
+              font-weight: 500;
+            }
           }
         }
       }
     }
+    .list-wrapper {
+      background-color: #dddddd;
+    }
   }
-
-
 </style>
