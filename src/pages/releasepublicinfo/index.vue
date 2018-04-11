@@ -20,9 +20,12 @@
             </div>
             <div class="weui-uploader__bd">
               <div class="weui-uploader__files" id="uploaderFiles">
-                <block v-for="item in images" :key="index">
-                  <div class="weui-uploader__file" @click="previewImage" :id="item">
-                    <img class="weui-uploader__img" :src="item" mode="aspectFill" />
+                <block v-for="(item, index) in images" :key="index">
+                  <div class="weui-uploader__file img-wrapper" :id="item">
+                    <div class="delete-wrapper" @click="deleteSelectedImage(index)">
+                      <img src="/static/images/delete_32x32.png">
+                    </div>
+                    <img class="weui-uploader__img" :src="item" mode="aspectFill" @click="previewImage" />
                   </div>
                 </block>
               </div>
@@ -67,6 +70,10 @@
     },
 
     methods: {
+      // 删除选中的图片
+      deleteSelectedImage(index) {
+        this.images = this.images.filter((v, i) => i !== index);
+      },
       // 点击发布
       submit() {
         // const that = this;
@@ -95,10 +102,7 @@
             that.images = that.images.concat(res.tempFilePaths);
           },
           fail() {
-            wx.showToast({
-              title: '图片选择失败',
-              icon: 'none',
-            });
+            // 取消图片选择也会导致fail回调被触发
           },
         });
       },
@@ -113,5 +117,24 @@
   .noborder {
     border: 0;
   }
+  .img-wrapper {
+    position: relative;
+
+    .delete-wrapper {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0,0,0,.3);
+
+      img {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
 </style>
-mpvuetemplate
