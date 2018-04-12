@@ -4,6 +4,7 @@
       <div class="top-noti-wrapper">
         <div class="notitext" >
           {{ type.text }}
+          <span class="noti-text-noti">(点击切换类型)</span>
         </div>
       </div>
     </picker>
@@ -52,11 +53,11 @@
 
 <script>
   /**
-   * 在公共区域发布信息的页面
+   * 在公共区域发布信息的页面（能直接发布广场、失误找零、吃喝玩乐）
    * @time 2018/04/09
    * @author lxfriday
    */
-  import NotiText from '../../components/common/NotiText';
+  import qiniu from '../../utils/qiniu';
 
   function getType(id = 0) {
     const types = [{
@@ -83,10 +84,6 @@
       };
     },
 
-    components: {
-      NotiText,
-    },
-
     computed: {
       inputContent: {
         get() {
@@ -99,21 +96,27 @@
     },
 
     methods: {
+      // 点击发布
+      submit() {
+        if (this.$data.content.length) {
+          console.log({
+            type: this.$data.type.id,
+            images: this.$data.images,
+            content: this.$data.content.trim(),
+          });
+        } else {
+          wx.showToast({
+            title: '内容不能为空',
+            icon: 'none',
+          });
+        }
+      },
       bindTypePickerChange(e) {
         this.type = getType(+e.mp.detail.value);
       },
       // 删除选中的图片
       deleteSelectedImage(index) {
         this.images = this.images.filter((v, i) => i !== index);
-      },
-      // 点击发布
-      submit() {
-        // const that = this;
-        wx.showToast({
-          title: JSON.stringify({
-            images: this.images,
-          }),
-        });
       },
       // 预览图片
       previewImage(e) {
@@ -126,10 +129,17 @@
       chooseImage() {
         const that = this;
         wx.chooseImage({
+          count: 1, // 最多能选择一张图片
           sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
           sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
           success(res) {
-            console.log(`成功上传${res.tempFilePaths}`);
+            qiniu({
+              filePath: res.tempFilePaths[0],
+              success() {
+                // console.log('uploadsuccess', info);
+              },
+            });
+            // console.log(`成功上传${res.tempFilePaths}`);
             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
             that.images = that.images.concat(res.tempFilePaths);
           },
@@ -160,6 +170,11 @@
         font-size: 16px;
         border-left: 5px solid #5D4037;
         padding-left: 5px;
+
+        .noti-text-noti {
+          color: #A5D6A7;
+          font-size: 12px;
+        }
       }
     }
 
