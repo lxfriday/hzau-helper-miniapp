@@ -4,7 +4,12 @@
  * @author lxfriday
  */
 export default {
-  avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/3X0WGwRv8SBVfhTy4R3D2J8JExWBKJ5M7FYICWPjfRXgw5wDLe9eqoVvpaQkOVveHibA4c8jNaBaPKo2f1ceJjw/0',
-  nickName: '刘星',
-  classInfo: '机械设计制造及其自动化15级学生',
+  backImage: 'http://qiniu1.lxfriday.xyz/quanyecha/%E5%B0%8F%E7%8E%B2.jpg', // 小玲的图片
+  avatarUrl: 'http://qiniu1.lxfriday.xyz/quanyecha/1007E3BE94DA541BCC587F7E291B1194.png',
+  nickname: '止水、',
+  classInfo: 'hzau工学院',
+  motto: '心若止水，何患风雨',
+  email: 'liu3248184446@outlook.com',
+  gitee: 'https://gitee.com/robinxing',
+  github: 'https://github.com/lxfriday',
 };

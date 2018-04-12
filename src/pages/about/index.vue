@@ -3,7 +3,7 @@
     <div class="userinfo">
       <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
       <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
+        <card :text="userInfo.nickname"></card>
       </div>
     </div>
     <div class="items-wrapper weui-cells weui-cells_after-title">
@@ -20,6 +20,12 @@
         <div class="weui-cell__ft weui-cell__ft_in-access"></div>
       </a>
     </div>
+
+    <div class="weui-footer weui-footer_fixed-bottom">
+      <div class="weui-footer__text">{{ authorInfo.nickname }}</div>
+      <div class="weui-footer__text">{{ authorInfo.email }}</div>
+      <div class="weui-footer__text">{{ authorInfo.motto }}</div>
+    </div>
   </div>
 </template>
 
@@ -29,6 +35,7 @@
  */
 import card from '@/components/card';
 import CONFIG_VERSION from '../../config/version';
+import AUTHOR_INFO from '../../config/authorInfo';
 
 export default {
   data() {
@@ -36,6 +43,8 @@ export default {
       isUserInfoAvailable: false, // 是否获取了用户的信息
       userInfo: {},
       versionInfo: CONFIG_VERSION,
+
+      authorInfo: AUTHOR_INFO,
     };
   },
 
