@@ -14,7 +14,7 @@
       <div class="bottom-wrapper">
         <div>
           <div class="bottom-item-wrapper" @click="copyEmail">
-            <img src="/static/images/email_32x32.png" mode="aspectFit">
+            <img src="/static/images/email_64x64.png" mode="aspectFit">
             <div class="text">{{ authorInfo.email }}</div>
           </div>
           <div class="bottom-item-wrapper">
@@ -22,7 +22,7 @@
             <div class="text">{{ authorInfo.gitee }}</div>
           </div>
           <div class="bottom-item-wrapper">
-            <img src="/static/images/github_32x32.png" mode="aspectFit">
+            <img src="/static/images/github_64x64.png" mode="aspectFit">
             <div class="text">{{ authorInfo.github }}</div>
           </div>
         </div>
