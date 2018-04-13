@@ -10,6 +10,6 @@ export default {
   classInfo: 'hzau工学院',
   motto: '心若止水，何患风雨',
   email: 'liu3248184446@outlook.com',
-  gitee: 'https://gitee.com/robinxing',
+  gitee: 'https://gitee.com/lxfriday',
   github: 'https://github.com/lxfriday',
 };
