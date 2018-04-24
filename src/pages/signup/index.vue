@@ -54,6 +54,7 @@
    * @time 2018/04/12
    * @author lxfriday
    */
+
   export default {
     data() {
       return {
@@ -70,6 +71,15 @@
       },
     },
     methods: {
+    },
+    mounted() {
+      wx.request({
+        url: 'https://hzauhelper.lxfriday.xyz/api1', // 仅为示例，并非真实的接口地址
+        method: 'POST',
+        success(res) {
+          console.log(res);
+        },
+      });
     },
   };
 </script>

@@ -13,6 +13,7 @@
   "dependencies": {
     "moment": "^2.22.0",
     "mpvue": "^1.0.5",
+    "mpvue-loading": "^1.0.0",
     "query-string": "^6.0.0",
     "vuex": "^2.3.1"
   },

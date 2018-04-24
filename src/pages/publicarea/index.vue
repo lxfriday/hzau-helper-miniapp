@@ -1,36 +1,44 @@
 <template>
-  <div class="container">
-    <a class="release-button" href="/pages/releasepublicinfo/releasepublicinfo">
-      <img src="/static/images/add.png" class="release-img" >
-    </a>
-    <div class="top-wrapper">
-      <img
-        class="top-image"
-        mode="aspectFill"
-        src="/static/images/publicarea/image4.jpg">
-      <div class="top-content">
-        <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-        <div class="tab-wrapper">
-          <div class="tab">
-            <a href="/pages/lostandfound/lostandfound">失物招领</a>
-          </div>
-          <div class="tab">
-            <a href="/pages/eatandhavefun/eatandhavefun">吃喝玩乐</a>
+  <scroll-view
+    :style="'height: ' + scrollviewHeight + 'px'"
+    :scroll-y="true"
+    :lower-threshold="0"
+    @scrolltolower="handleScrollToBottom"
+    @scroll="handleScroll">
+    <div class="container">
+      <a class="release-button" href="/pages/releasepublicinfo/releasepublicinfo">
+        <img src="/static/images/add.png" class="release-img" >
+      </a>
+      <div class="top-wrapper">
+        <img
+          class="top-image"
+          mode="aspectFill"
+          src="/static/images/publicarea/image4.jpg">
+        <div class="top-content">
+          <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
+          <div class="tab-wrapper">
+            <div class="tab">
+              <a href="/pages/lostandfound/lostandfound">失物招领</a>
+            </div>
+            <div class="tab">
+              <a href="/pages/eatandhavefun/eatandhavefun">吃喝玩乐</a>
+            </div>
           </div>
         </div>
       </div>
+      <div class="list-wrapper">
+        <list-item
+          v-for="(item, index) in listData"
+          :avatarUrl="item.avatarUrl"
+          :nickname="item.nickname"
+          :releasedTime="item.releasedTime"
+          :content="item.content"
+          :images="item.images"
+          :key="index"/>
+      </div>
+      <LoadingComponent v-if="loading" />
     </div>
-    <div class="list-wrapper">
-      <list-item
-        v-for="(item, index) in listData"
-        :avatarUrl="item.avatarUrl"
-        :nickname="item.nickname"
-        :releasedTime="item.releasedTime"
-        :content="item.content"
-        :images="item.images"
-        :key="index"/>
-    </div>
-  </div>
+  </scroll-view>
 </template>
 
 
@@ -41,22 +49,41 @@
    * @author lxfriday
    */
   import ListItem from '../../components/publicarea/ListItem';
-  import mockData from '../../mock/publicarea/mock';
+  import LoadingComponent from '../../components/common/Loading';
+  import { PUBLICAREA_LIST } from '../../store/mutation-types';
+  import store from './store';
 
   export default {
     data() {
       return {
+        scrollviewHeight: 0,
         isUserInfoAvailable: false, // 是否获取了用户的信息
         userInfo: {},
-        listData: [], // 列表的數據
       };
+    },
+
+    computed: {
+      loading() {
+        return store.state.loading;
+      },
+      listData() {
+        return store.state.listData;
+      },
     },
 
     components: {
       ListItem,
+      LoadingComponent,
     },
 
     methods: {
+      // 滚动到底部触发的回调
+      handleScrollToBottom() {
+        store.dispatch({
+          type: PUBLICAREA_LIST,
+        });
+        // console.log(store);
+      },
       getUserInfo() {
         // 调用登录接口
         wx.login({
@@ -70,7 +97,18 @@
           },
         });
       },
+      // 获得可滚动区域的高度
+      getAvailableAreaHeight() {
+        const that = this;
+        wx.getSystemInfo({
+          success(res) {
+            that.scrollviewHeight = res.windowHeight;
+            console.log(res.windowHeight);
+          },
+        });
+      },
     },
+
 
     created() {
       // 调用应用实例的方法获取全局数据
@@ -84,8 +122,15 @@
           nickName: '匿名用户',
         };
       }
-      this.listData = mockData();
+
+      this.getAvailableAreaHeight();
+
+      // 开启加载
+      store.dispatch({
+        type: PUBLICAREA_LIST,
+      });
     },
+
   };
 </script>
 
