@@ -17,9 +17,9 @@ export default {
       // tab
       'pages/map/map',
       'pages/places/places',
-      '^pages/publicarea/publicarea',
+      'pages/publicarea/publicarea',
       'pages/lostandfound/lostandfound',
-      'pages/about/about',
+      '^pages/about/about',
 
       // other pages
       'pages/author/author',

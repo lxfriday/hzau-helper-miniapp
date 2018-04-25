@@ -43,7 +43,6 @@ import { USER_SIGNIN_FROM_LOCAL, USER_SIGNOUT } from '../../store/mutation-types
 export default {
   data() {
     return {
-      isUserInfoAvailable: false, // 是否获取了用户的信息
       versionInfo: CONFIG_VERSION,
 
       authorInfo: AUTHOR_INFO,
@@ -88,16 +87,6 @@ export default {
   created() {
     // 调用应用实例的方法获取全局数据
     this.getUserInfo();
-  },
-
-  mounted() {
-    // 如果没有获取到用户的信息，则显示其他内容
-    // if (!this.isUserInfoAvailable) {
-    //   this.userInfo = {
-    //     avatarUrl: 'http://qiniu1.lxfriday.xyz/hzau-helper/crying-3.png',
-    //     nickName: '匿名用户',
-    //   };
-    // }
   },
 };
 </script>
