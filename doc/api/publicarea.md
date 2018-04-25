@@ -2,7 +2,7 @@
 
 #### `/api/publicarea/submit`
 
-发表广场的动态
+`post`发表广场的动态
 
 - token `String` 令牌
 
@@ -24,7 +24,7 @@
 
 #### `/api/publicarea/index`
 
-广场主页面列表
+`get`广场主页面列表
 
 - page `Number` 页数
 

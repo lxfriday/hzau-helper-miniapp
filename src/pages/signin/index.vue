@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="weui-btn-area bottom-submit-wrapper">
-      <button class="weui-btn" type="primary" @click="submit" plain="true">登录</button>
+      <button class="weui-btn" type="primary" @click="submit" plain="true">{{ signInLoading? '登录中' : '登录' }}</button>
     </div>
     <div class="goto-signup">
       <!--<span @click="navigateToSignUp">前往注册</span>-->
@@ -42,6 +42,8 @@
    * @author lxfriday
    */
   import { checkPhone, checkPassword } from '../../utils/checkUserInfo';
+  import store from '../about/store';
+  import { USER_SIGNIN } from '../../store/mutation-types';
 
   export default {
     data() {
@@ -51,6 +53,12 @@
       };
     },
 
+    computed: {
+      signInLoading() {
+        return store.state.signInLoading;
+      },
+    },
+
     methods: {
       navigateToSignUp() {
         wx.navigateTo({
@@ -58,11 +66,16 @@
         });
       },
       submit() {
-        if (checkPhone(this.phone) && checkPassword(this.password)) {
-          console.log({
-            phone: this.phone,
-            password: this.password,
-          });
+        if (!this.signInLoading) {
+          if (checkPhone(this.phone) && checkPassword(this.password)) {
+            store.dispatch({
+              type: USER_SIGNIN,
+              payload: {
+                phone: this.phone,
+                password: this.password,
+              },
+            });
+          }
         }
       },
     },

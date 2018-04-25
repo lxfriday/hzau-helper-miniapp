@@ -36,7 +36,7 @@
           :images="item.images"
           :key="index"/>
       </div>
-      <LoadingComponent v-if="loading" />
+      <LoadingComponent :show="loading" />
     </div>
   </scroll-view>
 </template>
@@ -103,7 +103,6 @@
         wx.getSystemInfo({
           success(res) {
             that.scrollviewHeight = res.windowHeight;
-            console.log(res.windowHeight);
           },
         });
       },

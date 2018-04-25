@@ -1,12 +1,10 @@
 <template>
   <div class="container">
-    <div class="userinfo">
+    <div class="userinfo" @click="handlePressAvatar">
       <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickname"></card>
-      </div>
+      <span class="nickname">{{ userInfo.nickname }}</span>
     </div>
-    <div class="items-wrapper weui-cells weui-cells_after-title">
+    <div class="items-wrapper weui-cells">
       <div class="weui-cell weui-cell_access">
         <div class="weui-cell__bd">
           <div style="display: inline-block; vertical-align: middle">华中农业大学助手</div>
@@ -19,8 +17,12 @@
         </div>
         <div class="weui-cell__ft weui-cell__ft_in-access"></div>
       </a>
+      <div v-if="haveSignIn" class="weui-cell weui-cell_access" @click="handleSignOut">
+        <div class="weui-cell__bd">
+          <div style="display: inline-block; vertical-align: middle;color: orange">退出登录</div>
+        </div>
+      </div>
     </div>
-
     <div class="weui-footer weui-footer_fixed-bottom">
       <div class="weui-footer__text">{{ authorInfo.nickname }}</div>
       <div class="weui-footer__text">{{ authorInfo.email }}</div>
@@ -33,37 +35,52 @@
 /**
  * 关于
  */
-import card from '@/components/card';
 import CONFIG_VERSION from '../../config/version';
 import AUTHOR_INFO from '../../config/authorInfo';
+import store from './store';
+import { USER_SIGNIN_FROM_LOCAL, USER_SIGNOUT } from '../../store/mutation-types';
 
 export default {
   data() {
     return {
       isUserInfoAvailable: false, // 是否获取了用户的信息
-      userInfo: {},
       versionInfo: CONFIG_VERSION,
 
       authorInfo: AUTHOR_INFO,
     };
   },
 
-  components: {
-    card,
+  computed: {
+    signInLoading() {
+      return store.state.signInLoading;
+    },
+    signUpLoading() {
+      return store.state.signUpLoading;
+    },
+    userInfo() {
+      return store.state.userInfo;
+    },
+    haveSignIn() {
+      return store.state.haveSignIn;
+    },
   },
 
   methods: {
+    handlePressAvatar() {
+      if (!this.haveSignIn) {
+        wx.navigateTo({
+          url: '/pages/signin/signin',
+        });
+      }
+    },
+    handleSignOut() {
+      store.dispatch({
+        type: USER_SIGNOUT,
+      });
+    },
     getUserInfo() {
-      // 调用登录接口
-      wx.login({
-        success: () => {
-          wx.getUserInfo({
-            success: (res) => {
-              this.userInfo = res.userInfo;
-              this.isUserInfoAvailable = true;
-            },
-          });
-        },
+      store.dispatch({
+        type: USER_SIGNIN_FROM_LOCAL,
       });
     },
   },
@@ -75,42 +92,48 @@ export default {
 
   mounted() {
     // 如果没有获取到用户的信息，则显示其他内容
-    if (!this.isUserInfoAvailable) {
-      this.userInfo = {
-        avatarUrl: 'http://qiniu1.lxfriday.xyz/hzau-helper/crying-3.png',
-        nickName: '匿名用户',
-      };
-    }
+    // if (!this.isUserInfoAvailable) {
+    //   this.userInfo = {
+    //     avatarUrl: 'http://qiniu1.lxfriday.xyz/hzau-helper/crying-3.png',
+    //     nickName: '匿名用户',
+    //   };
+    // }
   },
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
  .container {
-   padding: 100px 0;
+   .userinfo {
+     display: flex;
+     height: 68px;
+     padding: 20px 16px 0;
+     width: 100%;
+     flex-direction: row;
+     align-items: center;
+
+     .userinfo-avatar {
+       width: 68px;
+       height: 68px;
+       border-radius: 50%;
+       border: 1px solid #ccc;
+     }
+
+     .nickname {
+       color: #000;
+       font-size: 18px;
+       margin-left: 16px;
+       font-weight: bold;
+     }
+   }
+   .items-wrapper {
+     flex: 1;
+     margin-top: 25px;
+   }
  }
 
- .items-wrapper {
-   flex: 1;
-   margin-top: 25px;
- }
 
-.userinfo {
-  display: flex;
-  width: 100%;
-  height: 175px;
-  flex-direction: column;
-  align-items: center;
-}
 
-.userinfo-avatar {
-  width: 90px;
-  height: 90px;
-  margin: 10px;
-  border-radius: 50%;
-}
 
-.userinfo-nickname {
-  color: #aaa;
-}
+
 </style>

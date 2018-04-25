@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <ball-pulse-loader :size="size" :color="color" />
+    <ball-pulse-loader v-if="show" :size="size" :color="color" />
   </div>
 </template>
 
@@ -9,6 +9,11 @@
 
   export default {
     props: {
+      // 是否显示加载动画
+      show: {
+        type: Boolean,
+        default: true,
+      },
       size: {
         type: Number,
         default: 10,
