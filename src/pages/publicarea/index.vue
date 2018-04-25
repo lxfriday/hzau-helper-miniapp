@@ -9,6 +9,9 @@
       <div class="release-button" @click="handleGoToSubmit">
         <img src="/static/images/add.png" class="release-img" >
       </div>
+      <div class="refresh-button" @click="handleRefresh">
+        <img src="/static/images/refresh.png" class="refresh-img" >
+      </div>
       <div class="top-wrapper">
         <img
           class="top-image"
@@ -50,7 +53,7 @@
    */
   import ListItem from '../../components/publicarea/ListItem';
   import LoadingComponent from '../../components/common/Loading';
-  import { PUBLICAREA_LIST } from '../../store/mutation-types';
+  import { PUBLICAREA_LIST, PUBLICAREA_LIST_REFRESH } from '../../store/mutation-types';
   import store from './store';
   import userStore from '../about/store';
 
@@ -58,8 +61,6 @@
     data() {
       return {
         scrollviewHeight: 0,
-        isUserInfoAvailable: false, // 是否获取了用户的信息
-        userInfo: {},
       };
     },
 
@@ -70,6 +71,18 @@
       listData() {
         return store.state.listData;
       },
+      userInfo() {
+        if (userStore.state.haveSignIn) {
+          return {
+            avatarUrl: userStore.state.userInfo.avatarUrl,
+            nickName: userStore.state.userInfo.nickName,
+          };
+        }
+        return {
+          avatarUrl: 'http://qiniu1.lxfriday.xyz/hzau-helper/crying-3.png',
+          nickName: '匿名用户',
+        };
+      },
     },
 
     components: {
@@ -78,6 +91,12 @@
     },
 
     methods: {
+      handleRefresh() {
+        // 刷新
+        store.dispatch({
+          type: PUBLICAREA_LIST_REFRESH,
+        });
+      },
       handleGoToSubmit() {
         // 只有登录了，才能进入到发布动态的页面
         if (userStore.state.haveSignIn) {
@@ -93,23 +112,11 @@
       },
       // 滚动到底部触发的回调
       handleScrollToBottom() {
+        // 获取下一页
         store.dispatch({
           type: PUBLICAREA_LIST,
         });
         // console.log(store);
-      },
-      getUserInfo() {
-        // 调用登录接口
-        wx.login({
-          success: () => {
-            wx.getUserInfo({
-              success: (res) => {
-                this.userInfo = res.userInfo;
-                this.isUserInfoAvailable = true;
-              },
-            });
-          },
-        });
       },
       // 获得可滚动区域的高度
       getAvailableAreaHeight() {
@@ -121,21 +128,7 @@
         });
       },
     },
-
-
-    created() {
-      // 调用应用实例的方法获取全局数据
-      this.getUserInfo();
-    },
     mounted() {
-      // 如果没有获取到用户的信息，则显示其他内容
-      if (!this.isUserInfoAvailable) {
-        this.userInfo = {
-          avatarUrl: 'http://qiniu1.lxfriday.xyz/hzau-helper/crying-3.png',
-          nickName: '匿名用户',
-        };
-      }
-
       this.getAvailableAreaHeight();
 
       // 开启加载
@@ -143,7 +136,6 @@
         type: PUBLICAREA_LIST,
       });
     },
-
   };
 </script>
 
@@ -155,13 +147,29 @@
       top: 10px;
       right: 10px;
       z-index: 999;
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
 
       .release-img {
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
+
+    .refresh-button {
+      position: fixed;
+      top: 60px;
+      right: 10px;
+      z-index: 999;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+
+      .refresh-img {
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
       }
     }

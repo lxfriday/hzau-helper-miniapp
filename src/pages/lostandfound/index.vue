@@ -1,16 +1,23 @@
 <template>
-  <div class="container">
-    <div class="list-wrapper">
-      <list-item
-        v-for="(item, index) in listData"
-        :avatarUrl="item.avatarUrl"
-        :nickname="item.nickname"
-        :releasedTime="item.releasedTime"
-        :content="item.content"
-        :images="item.images"
-        :key="index"/>
+  <scroll-view
+    :style="'height: ' + scrollviewHeight + 'px'"
+    :scroll-y="true"
+    :lower-threshold="0"
+    @scrolltolower="handleScrollToBottom">
+    <div class="container">
+      <div class="list-wrapper">
+        <list-item
+          v-for="(item, index) in listData"
+          :avatarUrl="item.avatarUrl"
+          :nickname="item.nickname"
+          :releasedTime="item.releasedTime"
+          :content="item.content"
+          :images="item.images"
+          :key="index"/>
+      </div>
+      <LoadingComponent :show="loading" />
     </div>
-  </div>
+  </scroll-view>
 </template>
 
 <script>
@@ -20,27 +27,59 @@
    * @author lxfriday
    */
   import ListItem from '../../components/publicarea/ListItem';
-  import mockData from '../../mock/lostandfound/mock';
+  import LoadingComponent from '../../components/common/Loading';
+  import {
+    LOSTANDFOUND_LIST,
+    LOSTANDFOUND_LIST_RESET,
+  } from '../../store/mutation-types';
+  import store from './store';
+
 
   export default {
     data() {
       return {
-        listData: [], // 列表的數據
+        scrollviewHeight: 0,
       };
     },
-
     components: {
       ListItem,
+      LoadingComponent,
     },
-
+    computed: {
+      loading() {
+        return store.state.loading;
+      },
+      listData() {
+        return store.state.listData;
+      },
+    },
     methods: {
-    },
-
-    created() {
-      // 调用应用实例的方法获取全局数据
+      handleScrollToBottom() {
+        // 获取下一页
+        store.dispatch({
+          type: LOSTANDFOUND_LIST,
+        });
+      },
+      // 获得可滚动区域的高度
+      getAvailableAreaHeight() {
+        const that = this;
+        wx.getSystemInfo({
+          success(res) {
+            that.scrollviewHeight = res.windowHeight;
+          },
+        });
+      },
     },
     mounted() {
-      this.listData = mockData();
+      this.getAvailableAreaHeight();
+      store.dispatch({
+        type: LOSTANDFOUND_LIST,
+      });
+    },
+    onUnload() {
+      store.commit({
+        type: LOSTANDFOUND_LIST_RESET,
+      });
     },
   };
 </script>

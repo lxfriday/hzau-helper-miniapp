@@ -18,6 +18,7 @@ export default {
       'pages/map/map',
       'pages/places/places',
       '^pages/publicarea/publicarea',
+      'pages/lostandfound/lostandfound',
       'pages/about/about',
 
       // other pages

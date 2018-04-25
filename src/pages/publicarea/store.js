@@ -1,12 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import mockData from '../../mock/publicarea/mock';
-
+import API from '../../config/api';
+import { GET } from '../../utils/request';
 import {
   PUBLICAREA_LOADING_FALSE,
   PUBLICAREA_LOADING_TRUE,
   PUBLICAREA_LIST,
+  PUBLICAREA_LIST_REFRESH,
+  PUBLICAREA_LIST_CLEAN,
 } from '../../store/mutation-types';
 
 Vue.use(Vuex);
@@ -31,26 +33,99 @@ const store = new Vuex.Store({
       obj.page = payload.page;
       obj.listData = [...obj.listData, ...payload.listData];
     },
+    [PUBLICAREA_LIST_REFRESH]: (state, payload) => {
+      const obj = state;
+      obj.page = payload.page;
+      obj.listData = [...payload.listData];
+    },
+    [PUBLICAREA_LIST_CLEAN]: (state) => {
+      const obj = state;
+      obj.page = 1;
+      obj.listData = [];
+    },
   },
   actions: {
     async [PUBLICAREA_LIST]({ commit, state }) {
+      // 正在加载的时候，不再继续加载，防止重复
       if (!state.loading) {
         const newPage = state.page + 1;
         commit({
           type: PUBLICAREA_LOADING_TRUE,
         });
-        setTimeout(() => {
-          commit({
-            type: PUBLICAREA_LIST,
-            listData: mockData(),
+        GET({
+          url: API.publicarea.index,
+          data: {
             page: newPage,
-          });
-          commit({
-            type: PUBLICAREA_LOADING_FALSE,
-          });
-        }, 2000);
-      } else {
-        console.log('已经在加载了');
+          },
+          success: (res) => {
+            if (!res.data.errno) {
+              commit({
+                type: PUBLICAREA_LIST,
+                listData: res.data.data,
+                page: newPage,
+              });
+            } else {
+              wx.showToast({
+                title: res.data.errmsg,
+                icon: 'none',
+              });
+            }
+          },
+          fail() {
+            wx.showToast({
+              title: '网络请求失败，请稍后再试',
+              icon: 'none',
+            });
+          },
+          complete() {
+            commit({
+              type: PUBLICAREA_LOADING_FALSE,
+            });
+          },
+        });
+      }
+    },
+    async [PUBLICAREA_LIST_REFRESH]({ commit, state }) {
+      // 正在加载的时候，不再继续加载，防止重复
+      if (!state.loading) {
+        const newPage = 1;
+        commit({
+          type: PUBLICAREA_LOADING_TRUE,
+        });
+        commit({
+          type: PUBLICAREA_LIST_CLEAN,
+        });
+        GET({
+          url: API.publicarea.index,
+          data: {
+            page: newPage,
+          },
+          success: (res) => {
+            if (!res.data.errno) {
+              commit({
+                type: PUBLICAREA_LIST_REFRESH,
+                listData: res.data.data,
+                page: newPage,
+              });
+            } else {
+              wx.showToast({
+                title: res.data.errmsg,
+                icon: 'none',
+              });
+            }
+          },
+          fail() {
+            wx.showToast({
+              title: '网络请求失败，请稍后再试',
+              icon: 'none',
+            });
+          },
+          complete() {
+            commit({
+              type: PUBLICAREA_LOADING_FALSE,
+            });
+          },
+        });
       }
     },
   },

@@ -4,5 +4,5 @@
  * @author lxfriday
  */
 export default {
-  version: 'V0.1.2',
+  version: 'V1.0.1',
 };
