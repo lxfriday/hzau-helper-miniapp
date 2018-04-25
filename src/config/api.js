@@ -8,6 +8,9 @@ export const qiniuDomain = 'qiniu1.lxfriday.xyz';
 const serverDomain = 'https://hzauhelper.lxfriday.xyz/api'; // 后端服务器的地址
 
 export default {
+  upload: {
+    getToken: `${serverDomain}/upload/token`, // 获取上传用的token
+  },
   user: {
     signUp: `${serverDomain}/user/signUp`, // 注册
     signIn: `${serverDomain}/user/signIn`, // 登录

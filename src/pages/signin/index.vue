@@ -79,6 +79,11 @@
         }
       },
     },
+    onUnload() {
+      // 退出页面的时候，复原原有的值
+      // this.$options.data() 重新调用data函数返回的数据值
+      Object.assign(this.$data, this.$options.data());
+    },
   };
 </script>
 

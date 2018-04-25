@@ -69,10 +69,10 @@
     data() {
       return {
         avatarUrl: '', // 头像地址
-        nickname: 'lxfriday', // 昵称
-        phone: '18627825090',
-        password: 'liuxing001',
-        verifyCode: '1100',
+        nickname: '', // 昵称
+        phone: '',
+        password: '',
+        verifyCode: '',
 
         showGetVerifyCode: true,
         count: 0,
@@ -144,7 +144,6 @@
                 verifyCode,
               },
             });
-            console.log(avatarUrl);
           }
         }
       },
@@ -164,13 +163,11 @@
     },
     mounted() {
       this.getWXUserAvatar();
-      // wx.request({
-      //   url: 'https://hzauhelper.lxfriday.xyz/api1', // 仅为示例，并非真实的接口地址
-      //   method: 'POST',
-      //   success(res) {
-      //     console.log(res);
-      //   },
-      // });
+    },
+    onUnload() {
+      // 退出页面的时候，复原原有的值
+      // this.$options.data() 重新调用data函数返回的数据值
+      Object.assign(this.$data, this.$options.data());
     },
   };
 </script>

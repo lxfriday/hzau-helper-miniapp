@@ -76,7 +76,7 @@ export function checkNickname(nickname) {
 export function checkAvatarUrl(avatarUrl) {
   if (!avatarUrl.length) {
     wx.showToast({
-      title: '请选择头像',
+      title: '请使用微信头像注册',
       icon: 'none',
     });
     return false;

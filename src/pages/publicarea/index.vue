@@ -6,9 +6,9 @@
     @scrolltolower="handleScrollToBottom"
     @scroll="handleScroll">
     <div class="container">
-      <a class="release-button" href="/pages/releasepublicinfo/releasepublicinfo">
+      <div class="release-button" @click="handleGoToSubmit">
         <img src="/static/images/add.png" class="release-img" >
-      </a>
+      </div>
       <div class="top-wrapper">
         <img
           class="top-image"
@@ -52,6 +52,7 @@
   import LoadingComponent from '../../components/common/Loading';
   import { PUBLICAREA_LIST } from '../../store/mutation-types';
   import store from './store';
+  import userStore from '../about/store';
 
   export default {
     data() {
@@ -77,6 +78,19 @@
     },
 
     methods: {
+      handleGoToSubmit() {
+        // 只有登录了，才能进入到发布动态的页面
+        if (userStore.state.haveSignIn) {
+          wx.navigateTo({
+            url: '/pages/releasepublicinfo/releasepublicinfo',
+          });
+        } else {
+          wx.showToast({
+            title: '请登录后再进行动态发布',
+            icon: 'none',
+          });
+        }
+      },
       // 滚动到底部触发的回调
       handleScrollToBottom() {
         store.dispatch({

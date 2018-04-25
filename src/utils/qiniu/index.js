@@ -1,8 +1,7 @@
 import qiniuUploader from './qiniuUploader';
 import uniqueImageName from '../../config/upload/uniqueImageName';
-import { qiniuDomain } from '../../config/api';
+import API, { qiniuDomain } from '../../config/api';
 
-const uptoken = 'zlvMwqEQx1Yir9urPO0cwCAUt-7PMXUJWZnRY35S:u2-VTVdOE81yRgAS-o3Sk-maTN0=:eyJyZXR1cm5Cb2R5Ijoie1wia2V5XCI6XCIkKGtleSlcIixcImhhc2hcIjpcIiQoZXRhZylcIixcImZzaXplXCI6JChmc2l6ZSksXCJidWNrZXRcIjpcIiQoYnVja2V0KVwiLFwibmFtZVwiOlwiJCh4Om5hbWUpXCJ9Iiwic2NvcGUiOiJzdG9yYWdlIiwiZGVhZGxpbmUiOjE1MjM1MjQ1ODN9';
 
 // function initQiniu(token) {
 //   const options = {
@@ -36,7 +35,7 @@ export default function ({
       }, {
         key: newImageName,
         region: 'ECN', // 华北区
-        uptoken,
+        uptokenURL: API.upload.getToken,
         domain: qiniuDomain,
         shouldUseQiniuFileName: false,
       }, (pg) => {

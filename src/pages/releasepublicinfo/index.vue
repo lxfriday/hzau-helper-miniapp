@@ -28,12 +28,12 @@
             </div>
             <div class="weui-uploader__bd">
               <div class="weui-uploader__files" id="uploaderFiles">
-                <block v-for="(item, index) in images" :key="index">
-                  <div class="weui-uploader__file img-wrapper" :id="item">
+                <block v-for="item in images" :key="index">
+                  <div class="weui-uploader__file img-wrapper">
                     <div class="delete-wrapper" @click="deleteSelectedImage(index)">
                       <img src="/static/images/delete_32x32.png">
                     </div>
-                    <img class="weui-uploader__img" :src="item" mode="aspectFill" @click="previewImage" />
+                    <img class="weui-uploader__img" :src="item" mode="aspectFill" @click="previewImage" :id="item"/>
                   </div>
                 </block>
               </div>
@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="weui-btn-area">
-      <button class="weui-btn" type="primary" @click="submit" plain="true">发布</button>
+      <button class="weui-btn" type="primary" @click="submit" plain="true">{{ loading? '发布中': '发布' }}</button>
     </div>
   </div>
 </template>
@@ -58,6 +58,8 @@
    * @author lxfriday
    */
   import qiniu from '../../utils/qiniu';
+  import store from './store';
+  import { PUBLICAREA_SUBMIT } from '../../store/mutation-types';
 
   function getType(id = 0) {
     const types = [{
@@ -93,22 +95,32 @@
           this.content = text;
         },
       },
+      loading() {
+        return store.state.loading;
+      },
     },
 
     methods: {
       // 点击发布
       submit() {
-        if (this.$data.content.length) {
-          console.log({
-            type: this.$data.type.id,
-            images: this.$data.images,
-            content: this.$data.content.trim(),
-          });
-        } else {
-          wx.showToast({
-            title: '内容不能为空',
-            icon: 'none',
-          });
+        if (!this.loading) {
+          const that = this;
+          if (this.content.length) {
+            store.dispatch({
+              type: PUBLICAREA_SUBMIT,
+              payload: {
+                type: that.type.id,
+                images: that.images,
+                content: that.content.trim(),
+                cb: that.resetData,
+              },
+            });
+          } else {
+            wx.showToast({
+              title: '内容不能为空',
+              icon: 'none',
+            });
+          }
         }
       },
       bindTypePickerChange(e) {
@@ -135,24 +147,26 @@
           success(res) {
             qiniu({
               filePath: res.tempFilePaths[0],
-              success() {
-                // console.log('uploadsuccess', info);
+              success(info) {
+                // console.log(`成功上传${res.tempFilePaths}`);
+                // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+                that.images = that.images.concat(`http://${info.imageURL}`);
               },
             });
-            // console.log(`成功上传${res.tempFilePaths}`);
-            // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-            that.images = that.images.concat(res.tempFilePaths);
           },
           fail() {
             // 取消图片选择也会导致fail回调被触发
           },
         });
       },
+      resetData() {
+        // 退出页面的时候，复原原有的值
+        // this.$options.data() 重新调用data函数返回的数据值
+        Object.assign(this.$data, this.$options.data());
+      },
     },
     onUnload() {
-      // 退出页面的时候，复原原有的值
-      // this.$options.data() 重新调用data函数返回的数据值
-      Object.assign(this.$data, this.$options.data());
+      this.resetData();
     },
   };
 </script>

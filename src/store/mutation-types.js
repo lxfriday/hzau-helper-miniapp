@@ -20,3 +20,8 @@ export const USER_SIGNOUT = 'USER_SIGNOUT'; // 用户退出登录
 // 获取用户登录之后存储在本地的信息
 export const USER_SIGNIN_FROM_LOCAL = 'USER_SIGNIN_FROM_LOCAL';
 export const USER_SIGNUP_SEND_VERIFYCODE = 'USER_SIGNUP_SEND_VERIFYCODE'; // 注册的时候发送验证码
+
+// publicarea
+export const PUBLICAREA_SUBMIT_LOADING_TRUE = 'PUBLICAREA_SUBMIT_LOADING_TRUE'; // 发布的时候加载中
+export const PUBLICAREA_SUBMIT_LOADING_FALSE = 'PUBLICAREA_SUBMIT_LOADING_FALSE'; // 发布的时候加载结束
+export const PUBLICAREA_SUBMIT = 'PUBLICAREA_SUBMIT'; // 发布动态
