@@ -74,7 +74,7 @@ export function checkVerifyCode(code) {
 * @returns {boolean}
 */
 export function checkNickname(nickname) {
-  if (!/^[\w]{2,15}$/.test(nickname)) {
+  if (!/^.{2,15}$/.test(nickname)) {
     wx.showToast({
       title: '昵称长度为2到15位',
       icon: 'none',
