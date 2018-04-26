@@ -37,6 +37,22 @@ export function checkPassword(pass) {
 }
 
 /**
+ * 校验注册的时候两次输入的密码是否一致
+ * @param pass {string}
+ * @returns {boolean}
+ */
+export function checkConfirmPassword(pass, confirmPass) {
+  if (!(pass === confirmPass)) {
+    wx.showToast({
+      title: '两次密码输入不一致',
+      icon: 'none',
+    });
+    return false;
+  }
+  return true;
+}
+
+/**
  * 检查验证码
  * @param code {string}
  * @returns {boolean}

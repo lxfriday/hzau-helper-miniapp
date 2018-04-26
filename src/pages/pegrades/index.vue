@@ -23,6 +23,7 @@
       </div>
       <div class="weui-btn-area bottom-submit-wrapper">
         <button class="weui-btn" type="primary" @click="submit" plain="true">{{ loading? '查询中' : '查询' }}</button>
+        <div class="noti">默认密码为：888888</div>
       </div>
     </div>
 
@@ -61,7 +62,7 @@
           <div class="weui-form-preview__hd">
             <div class="weui-form-preview__item">
               <!-- 班级 -->
-              <div class="weui-form-preview__label">{{ item[3] }}</div>
+              <div class="weui-form-preview__label">{{ item[2] }}</div>
               <!-- 成绩 -->
               <div class="weui-form-preview__value_in-hd" style="color: #143250">{{ item[4] }}</div>
             </div>
@@ -71,7 +72,7 @@
               <!-- 年级 -->
               <div class="weui-form-preview__label">{{ item[1] }}</div>
               <!-- 是否及格 -->
-              <div class="weui-form-preview__value" :style="'color:' + (item[5] === '及格'? 'green' : 'orange')">{{ item[5] }}</div>
+              <div class="weui-form-preview__value" :style="'color:' + (item[5] === '及格' || item[5] === '良好'|| item[5] === '优秀'? 'green' : 'orange')">{{ item[5] }}</div>
             </div>
           </div>
         </div>
@@ -94,7 +95,7 @@
   export default {
     data() {
       return {
-        studentID: '2014307201211',
+        studentID: '',
         password: '888888',
       };
     },
@@ -143,4 +144,11 @@
 </script>
 
 <style scoped lang="less">
+  .container {
+
+    .noti {
+      color: #cccccc;
+      font-size: 12px;
+    }
+  }
 </style>

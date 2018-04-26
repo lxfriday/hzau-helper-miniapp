@@ -31,6 +31,14 @@
         </div>
         <div class="weui-cell weui-cell_input weui-cell_vcode">
           <div class="weui-cell__hd">
+            <div class="weui-label">确认密码</div>
+          </div>
+          <div class="weui-cell__bd">
+            <input class="weui-input" type="password" v-model="confirmPassword" maxlength="18"/>
+          </div>
+        </div>
+        <div class="weui-cell weui-cell_input weui-cell_vcode">
+          <div class="weui-cell__hd">
             <div class="weui-label">验证码</div>
           </div>
           <div class="weui-cell__bd">
@@ -62,6 +70,7 @@
     checkVerifyCode,
     checkNickname,
     checkAvatarUrl,
+    checkConfirmPassword,
   } from '../../utils/checkUserInfo';
 
 
@@ -72,6 +81,7 @@
         nickname: '', // 昵称
         phone: '',
         password: '',
+        confirmPassword: '', // 确认密码
         verifyCode: '',
 
         showGetVerifyCode: true,
@@ -127,12 +137,16 @@
           nickname,
           phone,
           password,
+          confirmPassword,
           verifyCode,
         } = this;
 
-        if (checkAvatarUrl(avatarUrl) && checkNickname(nickname)
-          && checkPhone(phone) && checkPassword(password)
-          && checkVerifyCode(verifyCode)) {
+        if (checkPassword(password) &&
+            checkConfirmPassword(confirmPassword, password) &&
+            checkAvatarUrl(avatarUrl) &&
+            checkNickname(nickname) &&
+            checkPhone(phone) &&
+            checkVerifyCode(verifyCode)) {
           if (!this.signUpLoading) {
             store.dispatch({
               type: USER_SIGNUP,

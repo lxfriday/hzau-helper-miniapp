@@ -126,7 +126,10 @@ const store = new Vuex.Store({
                 },
               });
               // 返回上个页面
-              wx.navigateBack();
+              // wx.navigateBack();
+              wx.reLaunch({
+                url: '/pages/about/about',
+              });
               wx.showToast({
                 title: '登录成功',
                 icon: 'none',
@@ -180,6 +183,10 @@ const store = new Vuex.Store({
       });
       commit({
         type: USER_SIGNOUT,
+      });
+      // 退出登录也自动的重新开启app
+      wx.reLaunch({
+        url: '/pages/about/about',
       });
     },
 
@@ -249,8 +256,11 @@ const store = new Vuex.Store({
                 },
               });
               // 返回上个页面
-              wx.navigateBack({
-                delta: 2,
+              // wx.navigateBack({
+              //   delta: 2,
+              // });
+              wx.reLaunch({
+                url: '/pages/about/about',
               });
               wx.showToast({
                 title: '注册成功',
