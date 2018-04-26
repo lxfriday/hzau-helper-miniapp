@@ -8,7 +8,7 @@
 
 ```javascript
   r = {
-   errno: NUmber,
+   errno: Number,
    errmsg: String,
    data: {
      token: String,

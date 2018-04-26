@@ -18,10 +18,12 @@ export default {
       'pages/map/map',
       'pages/places/places',
       'pages/publicarea/publicarea',
-      'pages/lostandfound/lostandfound',
       '^pages/about/about',
+      'pages/schoolservice/schoolservice',
 
       // other pages
+      'pages/lostandfound/lostandfound',
+      'pages/pegrades/pegrades',
       'pages/author/author',
       'pages/placedetail/placedetail',
       'pages/signin/signin',

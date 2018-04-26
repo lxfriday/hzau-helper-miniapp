@@ -39,3 +39,8 @@ export const EATANDHAVEFUN_LOADING_FALSE = 'EATANDHAVEFUN_LOADING_FALSE'; // 列
 export const EATANDHAVEFUN_LIST = 'EATANDHAVEFUN_LIST'; // 获取列表
 export const EATANDHAVEFUN_LIST_RESET = 'EATANDHAVEFUN_LIST_RESET'; // 重置store数据
 
+// pegrades
+export const PEGRADES_LOADING_TRUE = 'PEGRADES_LOADING_TRUE'; // 查询中
+export const PEGRADES_LOADING_FALSE = 'PEGRADES_LOADING_FALSE'; // 查询结束
+export const PEGRADES = 'PEGRADES'; // 获取学生的体育管理系统数据
+export const PEGRADES_RESET = 'PEGRADES_RESET'; // 重置数据

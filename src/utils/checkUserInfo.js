@@ -83,3 +83,19 @@ export function checkAvatarUrl(avatarUrl) {
   }
   return true;
 }
+
+/**
+ * 检查学号
+ * @param studentID {string}
+ * @returns {boolean}
+ */
+export function checkStudentID(studentID) {
+  if (!/^[0-9]{13}$/.test(studentID)) {
+    wx.showToast({
+      title: '学号是13位数字',
+      icon: 'none',
+    });
+    return false;
+  }
+  return true;
+}

@@ -26,7 +26,7 @@ export default {
     placeList: `${serverDomain}/places/placeList`, // 华农特色的地点列表
   },
   schoolService: {
-    PEGrade: `${serverDomain}/schoolService/PEGrade`, // 体育管理系统的成绩查询
+    PEGrade: `${serverDomain}/schoolservice/PEGrade`, // 体育管理系统的成绩查询
   },
   settings: {
     advice: `${serverDomain}/settings/advice`, // 意见建议的反馈
