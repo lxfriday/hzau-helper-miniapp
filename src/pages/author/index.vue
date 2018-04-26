@@ -13,17 +13,21 @@
       </div>
       <div class="bottom-wrapper">
         <div>
+          <div class="bottom-item-wrapper" @click="copyWechatId">
+            <img src="/static/images/wechat_64x64.png" mode="aspectFit">
+            <div class="text">{{ authorInfo.wechatId }}</div>
+          </div>
           <div class="bottom-item-wrapper" @click="copyEmail">
             <img src="/static/images/email_64x64.png" mode="aspectFit">
             <div class="text">{{ authorInfo.email }}</div>
           </div>
-          <div class="bottom-item-wrapper">
-            <img src="/static/images/gitee.jpg" mode="aspectFit">
-            <div class="text">{{ authorInfo.gitee }}</div>
-          </div>
-          <div class="bottom-item-wrapper">
+          <div class="bottom-item-wrapper" @click="copyGithub">
             <img src="/static/images/github_64x64.png" mode="aspectFit">
             <div class="text">{{ authorInfo.github }}</div>
+          </div>
+          <div class="bottom-item-wrapper" @click="copyGitee">
+            <img src="/static/images/gitee.jpg" mode="aspectFit">
+            <div class="text">{{ authorInfo.gitee }}</div>
           </div>
         </div>
       </div>
@@ -45,7 +49,37 @@ export default {
   },
 
   methods: {
+    copyGitee() {
+      wx.setClipboardData({
+        data: this.authorInfo.gitee,
+        success() {
+          wx.showToast({
+            title: '复制成功',
+          });
+        },
+      });
+    },
+    copyGithub() {
+      wx.setClipboardData({
+        data: this.authorInfo.github,
+        success() {
+          wx.showToast({
+            title: '复制成功',
+          });
+        },
+      });
+    },
     // 点击邮箱，复制到剪贴板
+    copyWechatId() {
+      wx.setClipboardData({
+        data: this.authorInfo.wechatId,
+        success() {
+          wx.showToast({
+            title: '复制成功',
+          });
+        },
+      });
+    },
     copyEmail() {
       wx.setClipboardData({
         data: this.authorInfo.email,

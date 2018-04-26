@@ -12,4 +12,5 @@ export default {
   email: 'liu3248184446@outlook.com',
   gitee: 'https://gitee.com/lxfriday',
   github: 'https://github.com/lxfriday',
+  wechatId: 'StarLifing',
 };
