@@ -1,20 +1,44 @@
 <template>
   <div class="container">
     <div class="page__hd">
-      <div class="page__title">学生服务</div>
+      <div class="page__title">体育信息</div>
     </div>
     <div class="page__bd">
       <div class="weui-grids">
-        <block v-for="item in studentService" :key="index">
+        <block v-for="(item, ind) in peService" :key="ind">
           <a :href="item.href" class="weui-grid" hover-class="weui-grid_active">
             <img class="weui-grid__icon" :src="item.src" />
             <div class="weui-grid__label">{{item.name}}</div>
           </a>
         </block>
-        <div class="weui-grid" hover-class="weui-grid_active">
-          <img class="weui-grid__icon" src="/static/images/schoolservice/more.png" />
-          <div class="weui-grid__label">敬请期待</div>
-        </div>
+      </div>
+    </div>
+
+    <div class="page__hd divider">
+      <div class="page__title">教务信息</div>
+    </div>
+    <div class="page__bd">
+      <div class="weui-grids">
+        <block v-for="(item, ind) in jwcService" :key="ind">
+          <a :href="item.href" class="weui-grid" hover-class="weui-grid_active">
+            <img class="weui-grid__icon" :src="item.src" />
+            <div class="weui-grid__label">{{item.name}}</div>
+          </a>
+        </block>
+      </div>
+    </div>
+
+    <div class="page__hd divider">
+      <div class="page__title">宿舍信息</div>
+    </div>
+    <div class="page__bd">
+      <div class="weui-grids">
+        <block v-for="(item, ind) in roomService" :key="ind">
+          <a :href="item.href" class="weui-grid" hover-class="weui-grid_active">
+            <img class="weui-grid__icon" :src="item.src" />
+            <div class="weui-grid__label">{{item.name}}</div>
+          </a>
+        </block>
       </div>
     </div>
   </div>
@@ -29,8 +53,16 @@
   export default {
     data() {
       return {
-        studentService: [
+        peService: [
           { src: '/static/images/schoolservice/PE.png', name: '体育查分', href: '/pages/pegrades/pegrades' },
+        ],
+        jwcService: [
+          { src: '/static/images/schoolservice/jwc_termpga.png', name: '考试成绩', href: '/pages/jwctermpga/jwctermpga' },
+          { src: '/static/images/schoolservice/jwc_rankexamination.png', name: '等级考试', href: '/pages/jwcrankexamination/jwcrankexamination' },
+          { src: '/static/images/schoolservice/jwc_termexamination.png', name: '学期考试信息', href: '/pages/jwctermexamination/jwctermexamination' },
+        ],
+        roomService: [
+          { src: '/static/images/schoolservice/electriccharge.png', name: '宿舍电费查询', href: '/pages/electriccharge/electriccharge' },
         ],
       };
     },
@@ -44,4 +76,7 @@
 </script>
 
 <style scoped lang="less">
+  .divider{
+    margin-top: 16px;
+  }
 </style>

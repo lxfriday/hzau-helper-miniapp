@@ -22,6 +22,7 @@ export default {
       'pages/schoolservice/schoolservice',
 
       // other pages
+      'pages/electriccharge/electriccharge',
       'pages/lostandfound/lostandfound',
       'pages/pegrades/pegrades',
       'pages/author/author',
