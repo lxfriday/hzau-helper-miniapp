@@ -113,7 +113,7 @@
             selectedRoomInfo,
           },
           success() {
-            console.log('electriccharge 存储成功');
+            // console.log('electriccharge 存储成功');
           },
         });
         // {
@@ -136,9 +136,9 @@
             },
           });
         },
-        fail(err) {
+        fail() {
           // 之前没查询过，则在获取key的时候回获取失败
-          console.log('用户之前没有查询过宿舍电量', err);
+          // console.log('用户之前没有查询过宿舍电量', err);
         },
       });
       store.dispatch({

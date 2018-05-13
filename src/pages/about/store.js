@@ -122,7 +122,7 @@ const store = new Vuex.Store({
                   haveSignIn: true,
                 },
                 success() {
-                  console.log('user 存储成功');
+                  // console.log('user 存储成功');
                 },
               });
               // 返回上个页面
@@ -169,9 +169,9 @@ const store = new Vuex.Store({
             },
           });
         },
-        fail(err) {
+        fail() {
           // 用户之前没有登录过，则获取user这个key对应的数据会调用fail回调
-          console.log('用户没有登录或者注册过', err);
+          // console.log('用户没有登录或者注册过', err);
         },
       });
     },
@@ -252,7 +252,7 @@ const store = new Vuex.Store({
                   haveSignIn: true,
                 },
                 success() {
-                  console.log('user 存储成功');
+                  // console.log('user 存储成功');
                 },
               });
               // 返回上个页面

@@ -1,40 +1,36 @@
 <template>
   <div class="container">
-    text
+    termgpa
   </div>
 </template>
 
 <script>
   /**
-   * 公共区域的失物招领页面
-   * @time 2018/04/07
+   * 学生的等级考试成绩查询
+   * @time 2018/05/13
    * @author lxfriday
    */
+  import jwcSignInStore from '../jwcsignin/store';
+
   export default {
     data() {
       return {
       };
     },
 
-    methods: {
-      getUserInfo() {
-        // 调用登录接口
-        wx.login({
-          success: () => {
-            wx.getUserInfo({
-              success: (res) => {
-                this.userInfo = res.userInfo;
-                this.isUserInfoAvailable = true;
-              },
-            });
-          },
-        });
-      },
+    components: {
     },
 
-    created() {
-      // 调用应用实例的方法获取全局数据
-      this.getUserInfo();
+    computed: {
+
+    },
+
+    mounted() {
+      if (!jwcSignInStore.state.signInSuccess) {
+        wx.redirectTo({
+          url: '/pages/jwcsignin/jwcsignin?from=/pages/jwcrankexamination/jwcrankexamination',
+        });
+      }
     },
   };
 </script>

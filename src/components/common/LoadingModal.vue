@@ -24,7 +24,7 @@
     z-index: 9999;
     overflow: hidden;
     outline: 0;
-    background-color: rgba(0,0,0,.1);
+    background-color: rgba(255,255,255,.45);
     display: flex;
     justify-content: center;
     align-items: center;

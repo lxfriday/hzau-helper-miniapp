@@ -100,3 +100,75 @@
      },
   }
 ```
+
+
+#### `/api/schoolservice/jwcVerifyCode`
+
+`GET`获取登录时候的验证码、cookie、viewstate
+
+返回
+
+```javascript
+  r = {
+     errno: Number,
+     errmsg: String,
+     data: {
+        cookie: String,
+        img: String, // base64编码的图片
+        viewstate, // 状态
+     },
+  }
+```
+
+
+#### `/api/schoolservice/jwcSignIn`
+
+`POST`登录教务管理系统
+
+- studentId `String` 学号
+- password `String` 密码
+- verifyCode `String` 验证码
+- cookie `String` cookie
+- viewstate `String` 状态
+
+返回
+
+```javascript
+  r = {
+     errno: Number,
+     errmsg: String,
+     data: {
+        loginSuccess: Boolean, // 登录是否成功，登录成功之后，cookie便可以 通过识别
+        studentId: String, // 用户学号
+        cookie: String, // 用户cookie
+     },
+  }
+```
+
+
+#### `/api/schoolservice/jwcTermExamination`
+
+`POST`获取教务管理系统的本学期考试时间教室信息
+
+- studentId `String` 学号
+- cookie `String` cookie
+
+返回
+
+```javascript
+  r = {
+     errno: Number,
+     errmsg: String,
+     data: {
+       yearTerm: String, // 学年学期 2016-2017-2
+       examInfo: [
+         {
+           courseName: String,  // 课程名称 液压传动
+           studentName: String,  // 学生姓名 刘星
+           date: String,  // 考试时间 2018年05月17日(08:00-10:00)
+           location: String,  // 考试地点 二教101
+         }, // ...
+       ],
+     },
+  }
+```

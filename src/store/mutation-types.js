@@ -53,3 +53,19 @@ export const ELECTRIC_CHARGE_BUILDING_FLOOR_ROOM = 'ELECTRIC_CHARGE_BUILDING_FLO
 export const ELECTRIC_CHARGE_ROOM_CHARGE_AUTO = 'ELECTRIC_CHARGE_ROOM_CHARGE_AUTO'; // 打开页面的时候，自动查询以往的宿舍电费
 export const ELECTRIC_CHARGE_ROOM_CHARGE = 'ELECTRIC_CHARGE_ROOM_CHARGE'; // 查询房间的电费情况
 export const ELECTRIC_CHARGE_RESET = 'ELECTRIC_CHARGE_RESET'; // 退出之后重置获取到的数据
+
+// jwc 教务管理系统
+export const JWC_SIGNIN_SIGNIN_CODE_LOADING_TRUE = 'JWC_SIGNIN_SIGNIN_CODE_LOADING_TRUE'; // 加载signin code是loading状态
+export const JWC_SIGNIN_SIGNIN_CODE_LOADING_FALSE = 'JWC_SIGNIN_SIGNIN_CODE_LOADING_FALSE'; // 加载signin code不是loading状态
+export const JWC_SIGNIN_LOADING_TRUE = 'JWC_SIGNIN_LOADING_TRUE'; // 登录过程中是loading状态
+export const JWC_SIGNIN_LOADING_FALSE = 'JWC_SIGNIN_LOADING_FALSE'; // 登录过程中不是是loading转改
+export const JWC_SIGNIN_CODE = 'JWC_SIGNIN_CODE'; // 登录的验证码cookie对
+export const JWC_SIGNIN = 'JWC_SIGNIN'; // 登录教务管理系统
+
+export const JWC_TERM_GPA = 'JWC_TERM_GPA'; // 所有学期的成绩
+export const JWC_RANK_EXAMINATION = 'JWC_RANK_EXAMINATION'; // 等级考试
+
+export const JWC_TERM_EXAMINATION_LOADING_TRUE = 'JWC_TERM_EXAMINATION_LOADING_TRUE'; // 学期考试信息加载中
+export const JWC_TERM_EXAMINATION_LOADING_FALSE = 'JWC_TERM_EXAMINATION_LOADING_FALSE'; // 学期考试信息不处于加载中
+export const JWC_TERM_EXAMINATION = 'JWC_TERM_EXAMINATION'; // 学期考试地点时间信息
+

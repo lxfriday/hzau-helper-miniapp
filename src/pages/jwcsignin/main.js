@@ -6,7 +6,7 @@ app.$mount();
 
 export default {
   config: {
-    navigationBarTitleText: '学期考试信息',
+    navigationBarTitleText: '登录教务管理系统',
   },
 };
 

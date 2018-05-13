@@ -18,10 +18,12 @@ export default {
       'pages/map/map',
       'pages/places/places',
       'pages/publicarea/publicarea',
-      '^pages/about/about',
-      'pages/schoolservice/schoolservice',
+      'pages/about/about',
+      '^pages/schoolservice/schoolservice',
 
       // other pages
+      'pages/jwcsignin/jwcsignin',
+      'pages/jwctermexamination/jwctermexamination',
       'pages/electriccharge/electriccharge',
       'pages/lostandfound/lostandfound',
       'pages/pegrades/pegrades',
