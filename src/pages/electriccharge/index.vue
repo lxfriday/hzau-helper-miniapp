@@ -125,6 +125,9 @@
     },
     mounted() {
       const that = this;
+      store.dispatch({
+        type: ELECTRIC_CHARGE_ALL_BUILDING_INFO,
+      });
       wx.getStorage({
         key: 'electriccharge',
         success(res) {
@@ -140,9 +143,6 @@
           // 之前没查询过，则在获取key的时候回获取失败
           // console.log('用户之前没有查询过宿舍电量', err);
         },
-      });
-      store.dispatch({
-        type: ELECTRIC_CHARGE_ALL_BUILDING_INFO,
       });
     },
     onUnload() {
