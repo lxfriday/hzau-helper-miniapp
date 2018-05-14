@@ -23,6 +23,7 @@ export default {
 
       // other pages
       'pages/jwcsignin/jwcsignin',
+      'pages/jwctermpga/jwctermpga',
       'pages/jwctermexamination/jwctermexamination',
       'pages/electriccharge/electriccharge',
       'pages/lostandfound/lostandfound',

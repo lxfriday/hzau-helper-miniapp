@@ -62,7 +62,10 @@ export const JWC_SIGNIN_LOADING_FALSE = 'JWC_SIGNIN_LOADING_FALSE'; // 登录过
 export const JWC_SIGNIN_CODE = 'JWC_SIGNIN_CODE'; // 登录的验证码cookie对
 export const JWC_SIGNIN = 'JWC_SIGNIN'; // 登录教务管理系统
 
+export const JWC_TERM_GPA_LOADING_TRUE = 'JWC_TERM_GPA_LOADING_TRUE';
+export const JWC_TERM_GPA_LOADING_FALSE = 'JWC_TERM_GPA_LOADING_FALSE';
 export const JWC_TERM_GPA = 'JWC_TERM_GPA'; // 所有学期的成绩
+
 export const JWC_RANK_EXAMINATION = 'JWC_RANK_EXAMINATION'; // 等级考试
 
 export const JWC_TERM_EXAMINATION_LOADING_TRUE = 'JWC_TERM_EXAMINATION_LOADING_TRUE'; // 学期考试信息加载中
