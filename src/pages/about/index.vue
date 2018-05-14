@@ -11,23 +11,23 @@
         </div>
         <div class="weui-cell__ft">{{ versionInfo.version }}</div>
       </div>
-      <a href="/pages/author/author" class="weui-cell weui-cell_access">
-        <div class="weui-cell__bd">
-          <div style="display: inline-block; vertical-align: middle">作者</div>
-        </div>
-        <div class="weui-cell__ft weui-cell__ft_in-access"></div>
-      </a>
+      <!--<a href="/pages/author/author" class="weui-cell weui-cell_access">-->
+        <!--<div class="weui-cell__bd">-->
+          <!--<div style="display: inline-block; vertical-align: middle">作者</div>-->
+        <!--</div>-->
+        <!--<div class="weui-cell__ft weui-cell__ft_in-access"></div>-->
+      <!--</a>-->
       <div v-if="haveSignIn" class="weui-cell weui-cell_access" @click="handleSignOut">
         <div class="weui-cell__bd">
           <div style="display: inline-block; vertical-align: middle;color: orange">退出登录</div>
         </div>
       </div>
     </div>
-    <div class="weui-footer weui-footer_fixed-bottom">
-      <div class="weui-footer__text">{{ authorInfo.nickname }}</div>
-      <div class="weui-footer__text">{{ authorInfo.email }}</div>
-      <div class="weui-footer__text">{{ authorInfo.motto }}</div>
-    </div>
+    <!--<div class="weui-footer weui-footer_fixed-bottom">-->
+      <!--<div class="weui-footer__text">{{ authorInfo.nickname }}</div>-->
+      <!--<div class="weui-footer__text">{{ authorInfo.email }}</div>-->
+      <!--<div class="weui-footer__text">{{ authorInfo.motto }}</div>-->
+    <!--</div>-->
   </div>
 </template>
 
