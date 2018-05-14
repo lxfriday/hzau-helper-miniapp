@@ -4,8 +4,14 @@
  * @author lxfriday
  */
 export default {
-  version: 'V1.2.1',
+  version: 'V1.2.2',
   releaseNote: [
+    {
+      version: 'V1.2.2',
+      note: [
+        'update:修复宿舍电费查询，查询之后再次进入获取不到宿舍楼栋信息的问题',
+      ],
+    },
     {
       version: 'V1.2.1',
       note: [
