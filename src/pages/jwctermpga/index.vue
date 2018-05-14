@@ -87,8 +87,9 @@
 
 <style scoped lang="less">
   .container {
+    padding-bottom: 30px;
     .card_wrapper {
-      box-shadow: 0 0 1px #aaaaaa;
+      border-top: 1px solid #cccccc;
       padding: 3px 0;
       .yearterm_college {
         display: flex;
@@ -101,6 +102,7 @@
           color: #888888;
         }
         .college {
+          font-size: 12px;
           color: #143250;
         }
       }
@@ -125,11 +127,12 @@
         flex-direction: row;
         align-items: center;
         padding: 3px 12px;
-        font-size: 16px;
+        font-size: 14px;
+        color: #aaaaaa;
 
         .info {
-          font-size: 18px;
-          color: #000000;
+          font-size: 16px;
+          color: #666666;
         }
         .coursegrade {
         }

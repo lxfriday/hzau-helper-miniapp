@@ -4,8 +4,21 @@
  * @author lxfriday
  */
 export default {
-  version: 'V1.1.4',
+  version: 'V1.2.1',
   releaseNote: [
+    {
+      version: 'V1.2.1',
+      note: [
+        'update:修改成绩查询卡片样式',
+      ],
+    },
+    {
+      version: 'V1.2.0',
+      note: [
+        'new: 校园服务-成绩查询、等级考试成绩查询、考试信息查询；宿舍电费查询',
+        'update:消除开发者信息',
+      ],
+    },
     {
       version: 'V1.1.4',
       note: ['用户注册的昵称类型限制修复'],

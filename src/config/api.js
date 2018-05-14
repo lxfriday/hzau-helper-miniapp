@@ -6,9 +6,9 @@
 export const qiniuDomain = 'qiniu1.lxfriday.xyz';
 
 // production
-// const serverDomain = 'https://hzauhelper.lxfriday.xyz/api'; // 后端服务器的地址
+const serverDomain = 'https://hzauhelper.lxfriday.xyz/api'; // 后端服务器的地址
 // development
-const serverDomain = 'http://192.168.31.202:8360/api'; // 后端服务器的地址
+// const serverDomain = 'http://192.168.31.202:8360/api'; // 后端服务器的地址
 
 export default {
   upload: {
