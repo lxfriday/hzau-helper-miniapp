@@ -3,11 +3,13 @@ import Vuex from 'vuex';
 
 import API from '../../config/api';
 import userStore from '../about/store';
+import publicareaStore from '../publicarea/store';
 import { POST } from '../../utils/request';
 import {
   PUBLICAREA_SUBMIT_LOADING_TRUE,
   PUBLICAREA_SUBMIT_LOADING_FALSE,
   PUBLICAREA_SUBMIT,
+  PUBLICAREA_LIST_REFRESH,
 } from '../../store/mutation-types';
 
 
@@ -52,6 +54,12 @@ const store = new Vuex.Store({
                 icon: 'none',
               });
               payload.cb();
+              // 成功发布之后，刷新公共区域的列表
+              setTimeout(() => {
+                publicareaStore.dispatch({
+                  type: PUBLICAREA_LIST_REFRESH,
+                });
+              }, 500);
             } else {
               wx.showToast({
                 title: res.data.errmsg,
