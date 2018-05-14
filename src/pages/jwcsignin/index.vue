@@ -59,8 +59,8 @@
   export default {
     data() {
       return {
-        studentId: '2014307201211', // 学号
-        password: 'liuxing154405396', // 密码
+        studentId: '', // 学号
+        password: '', // 密码
         verifyCode: '', // 验证码
       };
     },

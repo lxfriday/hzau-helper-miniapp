@@ -172,3 +172,59 @@
      },
   }
 ```
+
+
+#### `/api/schoolservice/jwcRankExamination`
+
+`POST`学生等级考试成绩查询
+
+- studentId `String` 学号
+- cookie `String` cookie
+
+返回
+
+```javascript
+  r = {
+     errno: Number,
+     errmsg: String,
+     data: [
+        {
+             yearTerm: String, // 2014-2015-1 学年学期
+             examName: String, // 考试名称
+             examId: String, // 准考证号
+             date: String, // 考试日期
+             result: String, // 考试成绩
+             engListeningResult: String, // 英语听力，是四、六级考试则会有数字，否则是空字符串
+             engReadingResult: String, // 英语阅读，是四、六级考试则会有数字，否则是空字符串
+             engWritingingResult: String, // 英语写作，是四、六级考试则会有数字，否则是空字符串
+          }, // ...
+     ],
+  }
+```
+
+#### `/api/schoolservice/jwcTermGPA`
+
+`POST`获取教务管理系统的所有学期成绩
+
+- studentId `String` 学号
+- cookie `String` cookie
+
+返回
+
+```javascript
+  r = {
+     errno: Number,
+     errmsg: String,
+     data: [
+       {
+          yearTerm: String, // 2014-2015-1 学年期
+          courseName: String, // C语言程序设计 课程名称
+          courseType: String, // 必修 课程类型
+          credit: String, // 2.5 学分
+          gpa: String, // 4.00 绩点
+          courseGrade: String, // 91 课程成绩
+          college: String // 信息学院 课程所属学院
+       }, // ...
+     ],
+  }
+```
