@@ -71,7 +71,7 @@
 
     computed: {
       verifyCodeImg() {
-        return `data:image;base64,${jwcStore.state.signInCodeInfo.img}`;
+        return `data:image/png;base64,${jwcStore.state.signInCodeInfo.img}`;
       },
       signInLoading() {
         return jwcStore.state.loading;

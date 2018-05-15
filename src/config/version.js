@@ -4,12 +4,12 @@
  * @author lxfriday
  */
 export default {
-  version: 'V1.2.2',
+  version: 'V1.2.3',
   releaseNote: [
     {
-      version: 'V1.2.2',
+      version: 'V1.2.3',
       note: [
-        'update:修复宿舍电费查询，查询之后再次进入获取不到宿舍楼栋信息的问题',
+        'update:修复安卓手机无法显示教务管理系统验证码的问题', // base64编码实际格式为：data:image/png;base64,
       ],
     },
     {
