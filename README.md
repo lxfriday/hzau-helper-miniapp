@@ -27,7 +27,7 @@
 - `pages/about/about` 关于
 
 
-## Build Setup
+#### 安装
 
 ``` bash
 # install dependencies
