@@ -4,8 +4,14 @@
  * @author lxfriday
  */
 export default {
-  version: 'V1.2.3',
+  version: 'V2.0.0',
   releaseNote: [
+    {
+      version: 'V2.0.0',
+      note: [
+        'update:取消所有UGC内容部分，只提供查询信息服务',
+      ],
+    },
     {
       version: 'V1.2.3',
       note: [

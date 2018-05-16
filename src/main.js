@@ -17,7 +17,6 @@ export default {
       // tab
       'pages/map/map',
       'pages/places/places',
-      'pages/publicarea/publicarea',
       '^pages/about/about',
       'pages/schoolservice/schoolservice',
 
@@ -27,12 +26,8 @@ export default {
       'pages/jwctermpga/jwctermpga',
       'pages/jwctermexamination/jwctermexamination',
       'pages/electriccharge/electriccharge',
-      'pages/lostandfound/lostandfound',
       'pages/pegrades/pegrades',
-      'pages/author/author',
       'pages/placedetail/placedetail',
-      'pages/signin/signin',
-      'pages/signup/signup',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -57,12 +52,6 @@ export default {
           text: '华农特色',
           iconPath: 'static/images/tab/places.png',
           selectedIconPath: 'static/images/tab/places_selected.png',
-        },
-        {
-          pagePath: 'pages/publicarea/publicarea',
-          text: '广场', // 公共区域
-          iconPath: 'static/images/tab/publicarea.png',
-          selectedIconPath: 'static/images/tab/publicarea_selected.png',
         },
         {
           pagePath: 'pages/schoolservice/schoolservice',
