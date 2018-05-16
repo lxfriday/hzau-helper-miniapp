@@ -1,4 +1,4 @@
-# hzau-helper-wxapp-mpvue
+# mpvue-hzau-helper
 
 > mpvue版本的华中农大生活助手
 
