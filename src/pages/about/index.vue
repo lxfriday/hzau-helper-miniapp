@@ -8,6 +8,10 @@
         <div class="weui-cell__ft">{{ versionInfo.version }}</div>
       </div>
     </div>
+    <div class="weui-footer weui-footer_fixed-bottom">
+      <div class="weui-footer__text">联系方式</div>
+      <div class="weui-footer__text">{{ author.email }}</div>
+    </div>
   </div>
 </template>
 
@@ -16,11 +20,13 @@
  * 关于
  */
 import CONFIG_VERSION from '../../config/version';
+import CONFIG_AUTHOR from '../../config/authorInfo';
 
 export default {
   data() {
     return {
       versionInfo: CONFIG_VERSION,
+      author: CONFIG_AUTHOR,
     };
   },
   methods: {
@@ -59,9 +65,4 @@ export default {
      margin-top: 25px;
    }
  }
-
-
-
-
-
 </style>
