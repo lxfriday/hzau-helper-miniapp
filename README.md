@@ -1,6 +1,6 @@
 # mpvue-hzau-helper
 
-> mpvue版本的华中农大生活助手
+mpvue版本的华中农大生活助手
 
 #### tab页面
 
@@ -22,12 +22,17 @@
 - `pages/jwcsignin/jwcsignin` 登录教务管理系统
 - `pages/jwcrankexamination/jwcrankexamination` 等级考试查询
 - `pages/jwctermexamination/jwctermexamination` 学期考试信息查询
-- `pages/jwctermpga/jwctermpga` 所有学期的学期成绩查询
+- `pages/jwctermgpa/jwctermgpa` 所有学期的学期成绩查询
 - `pages/pegrades/pegrades` 将体育管理系统成绩查询
 - `pages/about/about` 关于
 
+#### repositories
 
-#### 安装
+- mpvue
+- vuex
+- moment
+
+#### usage
 
 ``` bash
 # install dependencies
@@ -42,3 +47,7 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+
+#### 说明
+
+教务、体育、寝室电费数据由学校各官方系统提供，如若侵权，请联系删改，本小程序及后端不存储任何用户数据
