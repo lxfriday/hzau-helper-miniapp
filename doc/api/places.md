@@ -21,7 +21,7 @@
           }, // ...
        ],
      },
-     success: Boolean, // 成功还是失败
-     errMsg: String, // 调用失败的时候的提示消息
+     errno: Number,
+     errmsg: String,
   }
 ```

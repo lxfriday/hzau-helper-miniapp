@@ -8,10 +8,6 @@
 
 ```javascript
   r = {
-   errno: Number,
-   errmsg: String,
-   data: {
-     token: String,
-   },
+    uptoken: String,
   }
 ```
