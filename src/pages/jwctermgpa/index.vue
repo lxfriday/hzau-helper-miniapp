@@ -70,7 +70,7 @@
     mounted() {
       if (!jwcSignInStore.state.signInSuccess) {
         wx.redirectTo({
-          url: '/pages/jwcsignin/jwcsignin?from=/pages/jwctermpga/jwctermpga',
+          url: '/pages/jwcsignin/jwcsignin?from=/pages/jwctermgpa/jwctermgpa',
         });
       } else {
         jwcTermGPAStore.dispatch({

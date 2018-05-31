@@ -23,7 +23,7 @@ export default {
       // other pages
       'pages/jwcrankexamination/jwcrankexamination',
       'pages/jwcsignin/jwcsignin',
-      'pages/jwctermpga/jwctermpga',
+      'pages/jwctermgpa/jwctermgpa',
       'pages/jwctermexamination/jwctermexamination',
       'pages/electriccharge/electriccharge',
       'pages/pegrades/pegrades',

@@ -57,7 +57,7 @@
           { src: '/static/images/schoolservice/PE.png', name: '体育查分', href: '/pages/pegrades/pegrades' },
         ],
         jwcService: [
-          { src: '/static/images/schoolservice/jwc_termpga.png', name: '考试成绩', href: '/pages/jwctermpga/jwctermpga' },
+          { src: '/static/images/schoolservice/jwc_termgpa.png', name: '考试成绩', href: '/pages/jwctermgpa/jwctermgpa' },
           { src: '/static/images/schoolservice/jwc_rankexamination.png', name: '等级考试', href: '/pages/jwcrankexamination/jwcrankexamination' },
           { src: '/static/images/schoolservice/jwc_termexamination.png', name: '学期考试信息', href: '/pages/jwctermexamination/jwctermexamination' },
         ],
