@@ -4,7 +4,6 @@ mpvue版本的华中农大生活助手
 
 <div style="text-align:center;margin: 20px">
     <img src="http://qiniu1.lxfriday.xyz/hzauhelper/IMG_0766.JPG" width=300 >
-    <span style="margin: 20px; color: #999;font-size:14px">小程序二维码</span>
 </div>
 
 #### tab页面
