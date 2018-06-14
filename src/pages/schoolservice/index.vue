@@ -54,7 +54,7 @@
     data() {
       return {
         peService: [
-          { src: '/static/images/schoolservice/PE.png', name: '体育查分', href: '/pages/pegrades/pegrades' },
+          { src: '/static/images/schoolservice/PE.png', name: '体测成绩', href: '/pages/pegrades/pegrades' },
         ],
         jwcService: [
           { src: '/static/images/schoolservice/jwc_termgpa.png', name: '考试成绩', href: '/pages/jwctermgpa/jwctermgpa' },
