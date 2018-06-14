@@ -32,6 +32,17 @@
           </div>
         </div>
       </div>
+      <checkbox-group @click="handleClickRem">
+        <label class="weui-agree">
+          <div class="weui-agree__text">
+            <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" :checked="rememberInfoFlag" />
+            <div class="weui-agree__checkbox-icon">
+              <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" v-if="rememberInfoFlag"></icon>
+            </div>
+            记住密码
+          </div>
+        </label>
+      </checkbox-group>
     </div>
     <div class="weui-btn-area bottom-submit-wrapper">
       <button class="weui-btn" type="primary" @click="submit" plain="true">{{ signInLoading? '登录中' : '登录' }}</button>
@@ -62,6 +73,8 @@
         studentId: '', // 学号
         password: '', // 密码
         verifyCode: '', // 验证码
+
+        rememberInfoFlag: true,
       };
     },
 
@@ -82,6 +95,11 @@
     },
 
     methods: {
+      // 记住用户名、密码
+      handleClickRem() {
+        // 点击了之后切换显示的状态
+        this.rememberInfoFlag = !this.rememberInfoFlag;
+      },
       // 登录
       submit() {
         const that = this;
@@ -89,6 +107,7 @@
           studentId,
           password,
           verifyCode,
+          rememberInfoFlag,
         } = that;
         if (this.checkStudentId() && this.checkPassword() && this.checkVerifyCode()) {
           jwcStore.dispatch({
@@ -97,6 +116,7 @@
               studentId,
               password,
               verifyCode,
+              rememberInfoFlag,
               // 成功之后进行页面跳转
               successCb: () => {
                 wx.redirectTo({
@@ -144,16 +164,30 @@
       handleRefreshVerifyCode() {
         this.getSignInCode();
       },
-
       getSignInCode() {
         jwcStore.dispatch({
           type: JWC_SIGNIN_CODE,
+        });
+      },
+      getStoredUserInfo() {
+        const that = this;
+        wx.getStorage({
+          key: 'jwcUserInfo',
+          success(res) {
+            that.studentId = res.data.username;
+            that.password = res.data.password;
+          },
+          fail() {
+            // 之前没查询过，则在获取key的时候回获取失败
+          },
         });
       },
     },
 
     mounted() {
       this.getSignInCode();
+      // 存储用户保存的学号和密码
+      this.getStoredUserInfo();
     },
   };
 </script>

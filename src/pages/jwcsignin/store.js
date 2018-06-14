@@ -117,6 +117,19 @@ const store = new Vuex.Store({
         },
         success: (res) => {
           if (!res.data.errno && res.data.data.loginSuccess) {
+            // 登录成功之后、允许记录，则记录用户名和密码
+            // 成功登录之后，保存用户的登录信息
+            if (payload.rememberInfoFlag) {
+              wx.setStorage({
+                key: 'jwcUserInfo',
+                data: {
+                  username: payload.studentId,
+                  password: payload.password,
+                },
+                success() {
+                },
+              });
+            }
             commit({
               type: JWC_SIGNIN,
               studentInfo: {

@@ -21,6 +21,17 @@
           </div>
         </div>
       </div>
+      <checkbox-group @click="handleClickRem">
+        <label class="weui-agree">
+          <div class="weui-agree__text">
+            <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" :checked="rememberInfoFlag" />
+            <div class="weui-agree__checkbox-icon">
+              <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" v-if="rememberInfoFlag"></icon>
+            </div>
+            记住密码
+          </div>
+        </label>
+      </checkbox-group>
       <div class="weui-btn-area bottom-submit-wrapper">
         <button class="weui-btn" type="primary" @click="submit" plain="true">{{ loading? '查询中' : '查询' }}</button>
         <div class="noti">默认密码为：888888</div>
@@ -84,7 +95,7 @@
 
 <script>
   /**
-   * 体育查分
+   * 体测成绩查询
    * @time 2018/04/26
    * @author lxfriday
    */
@@ -97,6 +108,7 @@
       return {
         studentID: '',
         password: '888888',
+        rememberInfoFlag: true,
       };
     },
 
@@ -116,10 +128,16 @@
     },
 
     methods: {
+      // 记住用户名、密码
+      handleClickRem() {
+        // 点击了之后切换显示的状态
+        this.rememberInfoFlag = !this.rememberInfoFlag;
+      },
       submit() {
         const {
           studentID,
           password,
+          rememberInfoFlag,
         } = this;
         if (checkStudentID(studentID) && password.length) {
           store.dispatch({
@@ -127,11 +145,32 @@
             payload: {
               studentID,
               password,
+              rememberInfoFlag,
             },
           });
         }
       },
+
+      getStoredUserInfo() {
+        const that = this;
+        wx.getStorage({
+          key: 'pegradesUserInfo',
+          success(res) {
+            that.studentID = res.data.username;
+            that.password = res.data.password;
+          },
+          fail() {
+            // 之前没查询过，则在获取key的时候回获取失败
+          },
+        });
+      },
     },
+
+    mounted() {
+      // 获取存储在本地的用户学号和密码
+      this.getStoredUserInfo();
+    },
+
     onUnload() {
       // 退出页面的时候，复原原有的值
       // this.$options.data() 重新调用data函数返回的数据值

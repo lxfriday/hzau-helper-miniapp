@@ -65,6 +65,18 @@ const store = new Vuex.Store({
           },
           success: (res) => {
             if (!res.data.errno) {
+              // 成功登录之后，保存用户的登录信息
+              if (payload.rememberInfoFlag) {
+                wx.setStorage({
+                  key: 'pegradesUserInfo',
+                  data: {
+                    username: payload.studentID,
+                    password: payload.password,
+                  },
+                  success() {
+                  },
+                });
+              }
               commit({
                 type: PEGRADES,
                 grades: res.data.data,
