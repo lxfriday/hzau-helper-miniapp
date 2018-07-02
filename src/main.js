@@ -42,16 +42,10 @@ export default {
       borderStyle: 'white',
       list: [
         {
-          pagePath: 'pages/map/map',
-          text: '华农地图',
-          iconPath: 'static/images/tab/map.png',
-          selectedIconPath: 'static/images/tab/map_selected.png',
-        },
-        {
-          pagePath: 'pages/places/places',
-          text: '华农特色',
-          iconPath: 'static/images/tab/places.png',
-          selectedIconPath: 'static/images/tab/places_selected.png',
+          pagePath: 'pages/daylife/daylife',
+          text: '敬请期待',
+          iconPath: 'static/images/tab/daylife.png',
+          selectedIconPath: 'static/images/tab/daylife_selected.png',
         },
         {
           pagePath: 'pages/schoolservice/schoolservice',

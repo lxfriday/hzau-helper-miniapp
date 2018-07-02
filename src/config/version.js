@@ -4,8 +4,15 @@
  * @author lxfriday
  */
 export default {
-  version: 'V2.0.2',
+  version: 'V3.0.0',
   releaseNote: [
+    {
+      version: 'V3.0.0',
+      note: [
+        '[update]:将地图和特色地点功能整合作为二级页面',
+        '[new]:新增敬请期待tab，随后进行功能新增',
+      ],
+    },
     {
       version: 'V2.0.2',
       note: [

@@ -78,7 +78,7 @@ export default {
     getWindowInfo() {
       wx.getSystemInfo({
         success: (res) => {
-          this.mapHeight = res.windowHeight - 30;
+          this.mapHeight = res.windowHeight + 10;
         },
       });
     },
