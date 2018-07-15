@@ -14,7 +14,7 @@
         </div>
       </swiper>
     </div>
-    <div class="items-wrapper weui-cells">
+    <div class="itemsWrapper weui-cells">
       <a href="/pages/map/map" class="weui-cell weui-cell_access">
         <div class="weui-cell__bd">华农地图</div>
         <div class="weui-cell__ft weui-cell__ft_in-access"></div>
@@ -71,29 +71,23 @@ export default {
 
 <style scoped lang="less">
  .container {
-   .userinfo {
-     display: flex;
-     height: 68px;
-     padding: 20px 16px 0;
-     flex-direction: row;
-     align-items: center;
-
-     .userinfo-avatar {
-       width: 68px;
-       height: 68px;
-       border-radius: 50%;
-       border: 1px solid #ccc;
-     }
-
-     .nickname {
-       color: #000;
-       font-size: 18px;
-       margin-left: 16px;
-       font-weight: bold;
-     }
-   }
-   .items-wrapper {
+   .itemsWrapper {
      margin-top: 0;
+     .getUserInfoButton {
+       box-sizing: border-box;
+       font-size: 16px;
+       text-align: left;
+       text-decoration: none;
+       line-height: normal;
+       border-radius: 0;
+       -webkit-tap-highlight-color: transparent;
+       overflow: hidden;
+       background-color: #ffffff;
+
+       &::after {
+         border: 0;
+       }
+     }
    }
    .swiperWrapper {
      swiper {

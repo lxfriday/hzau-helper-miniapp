@@ -28,7 +28,6 @@ import MARKERS, { administrativeBuildingPos, typeArray, typeIconArray } from '..
 export default {
   data() {
     return {
-      userInfo: {},
       mapHeight: 0, // 可视区域的高度，除去了导航条和底部的tab栏
       // 系统默认定位到行政楼
       locationInfo: {
@@ -59,19 +58,6 @@ export default {
       this.selectedTypeName = typeArray[e.mp.detail.value];
       this.selectedTypeIcon = typeIconArray[e.mp.detail.value];
     },
-    // 获取用户信息
-    getUserInfo() {
-      // 调用登录接口
-      wx.login({
-        success: () => {
-          wx.getUserInfo({
-            success: (res) => {
-              this.userInfo = res.userInfo;
-            },
-          });
-        },
-      });
-    },
     /**
      * 获取设备的可视区域的宽、高
      */
@@ -82,27 +68,10 @@ export default {
         },
       });
     },
-    /**
-     * 获取用户的位置信息
-     */
-    getLocation() {
-      wx.getLocation({
-        type: 'wgs84',
-        success: (res) => {
-          this.locationInfo = {
-            latitude: res.latitude,
-            longitude: res.longitude,
-          };
-        },
-      });
-    },
   },
-
   created() {
     // 调用应用实例的方法获取全局数据
-    this.getUserInfo();
     this.getWindowInfo();
-    this.getLocation();
   },
 };
 </script>
@@ -110,8 +79,8 @@ export default {
 <style scoped>
   .selector-wrapper {
     flex: 1;
-    height: 80rpx;
-    padding: 0 16rpx;
+    height: 40px;
+    padding: 0 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -125,23 +94,23 @@ export default {
     align-items: center;
   }
   .selector-left-location {
-    width: 40rpx;
-    height: 40rpx;
+    width: 20px;
+    height: 20px;
   }
   .selector-right-arrow {
-    width: 40rpx;
-    height: 40rpx;
+    width: 20px;
+    height: 20px;
   }
   .selector-center-text {
-    margin-left: 20rpx;
-    font-size: 30rpx;
+    margin-left: 10px;
+    font-size: 15px;
   }
   .option-buttons {
     flex: 1;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    height: 35rpx;
+    height: 17.5px;
     width: 100%;
   }
 
