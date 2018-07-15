@@ -43,7 +43,7 @@
     </div>
     <div class="weui-footer weui-footer_fixed-bottom">
       <div class="weui-footer__text">温馨提示</div>
-      <div class="weui-footer__text">考试成绩暂时不可用，等程序猿锅锅考完试，再进行功能修复</div>
+      <!--<div class="weui-footer__text">考试成绩暂时不可用，等程序猿锅锅考完试，再进行功能修复</div>-->
       <div class="weui-footer__text">在选课等特殊时间，学校的管理系统会比较不稳定，尝试重新进入页面或许会有奇效哦</div>
     </div>
   </div>
