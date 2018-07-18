@@ -41,12 +41,12 @@ export default {
       backgroundColor: '#ffffff',
       borderStyle: 'white',
       list: [
-        {
-          pagePath: 'pages/daylife/daylife',
-          text: '敬请期待',
-          iconPath: 'static/images/tab/daylife.png',
-          selectedIconPath: 'static/images/tab/daylife_selected.png',
-        },
+        // {
+        //   pagePath: 'pages/daylife/daylife',
+        //   text: '敬请期待',
+        //   iconPath: 'static/images/tab/daylife.png',
+        //   selectedIconPath: 'static/images/tab/daylife_selected.png',
+        // },
         {
           pagePath: 'pages/schoolservice/schoolservice',
           text: '校内服务', // 接入学生相关的服务
