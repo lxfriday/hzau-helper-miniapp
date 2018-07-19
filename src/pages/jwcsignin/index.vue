@@ -50,6 +50,9 @@
     <div class="noti">
       <span>使用教务管理系统的账号密码登录</span>
     </div>
+    <div class="adContainer">
+      <ad unit-id="adunit-e5d93002179fb122"></ad>
+    </div>
     <loading-modal v-if="signInLoading || signInCodeLoading" />
   </div>
 </template>
@@ -196,14 +199,20 @@
   .container {
 
 
-  .noti {
-    margin: 5px auto;
+    .noti {
+      margin: 5px auto;
 
-    span {
-      font-size: 16px;
-      color: #aaaaaa;
+      span {
+        font-size: 16px;
+        color: #aaaaaa;
+      }
     }
-  }
+    .adContainer {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
   }
 
 </style>

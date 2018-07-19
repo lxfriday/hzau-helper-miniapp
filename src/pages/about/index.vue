@@ -30,6 +30,7 @@
         <div class="weui-cell__ft">{{ versionInfo.version }}</div>
       </div>
     </div>
+    <ad unit-id="adunit-6f0b186182c9a9c8"></ad>
     <div class="weui-footer weui-footer_fixed-bottom">
       <div class="weui-footer__text">联系方式</div>
       <div class="weui-footer__text">{{ author.email }}</div>
