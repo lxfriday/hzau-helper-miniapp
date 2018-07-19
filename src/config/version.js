@@ -4,8 +4,17 @@
  * @author lxfriday
  */
 export default {
-  version: 'V3.0.0',
+  version: 'V3.0.1',
   releaseNote: [
+    {
+      version: 'V3.0.1',
+      note: [
+        '[update] 暂时关闭敬请期待',
+        '[update] 教务管理系统登录、关于页面添加广告位',
+        '[update] 地图定位改为直接定位到行政楼',
+        '[update] 修改校内服务提示语',
+      ],
+    },
     {
       version: 'V3.0.0',
       note: [
