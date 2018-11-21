@@ -1,28 +1,54 @@
-import '@tarojs/async-await'
-import Taro, { Component } from '@tarojs/taro'
-import { Provider } from '@tarojs/redux'
+import '@tarojs/async-await';
+import Taro, { Component } from '@tarojs/taro';
+import { Provider } from '@tarojs/redux';
 
-import Index from './pages/index'
+import About from './pages/about';
 
-import configStore from './store'
+import configStore from './store';
 
-import './app.less'
+import './app.less';
 
-const store = configStore()
+const store = configStore();
 
 class App extends Component {
-
   config = {
     pages: [
-      'pages/index/index'
+      'pages/about/index',
+      'pages/schoolservice/index',
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
-    }
-  }
+      navigationBarBackgroundColor: '#006d33',
+      navigationBarTitleText: '华中农业大学助手',
+      navigationBarTextStyle: 'white',
+    },
+    tabBar: {
+      color: '#999999',
+      selectedColor: '#006d33',
+      backgroundColor: '#ffffff',
+      borderStyle: 'white',
+      list: [
+        // {
+        //   pagePath: 'pages/daylife/daylife',
+        //   text: '敬请期待',
+        //   iconPath: 'static/images/tab/daylife.png',
+        //   selectedIconPath: 'static/images/tab/daylife_selected.png',
+        // },
+        {
+          pagePath: 'pages/schoolservice/index',
+          text: '校内服务', // 接入学生相关的服务
+          iconPath: 'static/images/tab/school.png',
+          selectedIconPath: 'static/images/tab/school_selected.png',
+        },
+        {
+          pagePath: 'pages/about/index',
+          text: '关于',
+          iconPath: 'static/images/tab/about.png',
+          selectedIconPath: 'static/images/tab/about_selected.png',
+        },
+      ],
+    },
+  };
 
   componentDidMount () {}
 
@@ -39,10 +65,10 @@ class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        <Index />
+        <About />
       </Provider>
     )
   }
 }
 
-Taro.render(<App />, document.getElementById('app'))
+Taro.render(<App />, document.getElementById('app'));
