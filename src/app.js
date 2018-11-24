@@ -13,41 +13,41 @@ const store = configStore();
 class App extends Component {
   config = {
     pages: [
-      'pages/about/index',
       'pages/schoolservice/index',
+      'pages/about/index',
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#006d33',
+      navigationBarBackgroundColor: '#ffffff',
       navigationBarTitleText: '华中农业大学助手',
-      navigationBarTextStyle: 'white',
+      navigationBarTextStyle: 'black',
     },
-    tabBar: {
-      color: '#999999',
-      selectedColor: '#006d33',
-      backgroundColor: '#ffffff',
-      borderStyle: 'white',
-      list: [
-        // {
-        //   pagePath: 'pages/daylife/daylife',
-        //   text: '敬请期待',
-        //   iconPath: 'static/images/tab/daylife.png',
-        //   selectedIconPath: 'static/images/tab/daylife_selected.png',
-        // },
-        {
-          pagePath: 'pages/schoolservice/index',
-          text: '校内服务', // 接入学生相关的服务
-          iconPath: 'static/images/tab/school.png',
-          selectedIconPath: 'static/images/tab/school_selected.png',
-        },
-        {
-          pagePath: 'pages/about/index',
-          text: '关于',
-          iconPath: 'static/images/tab/about.png',
-          selectedIconPath: 'static/images/tab/about_selected.png',
-        },
-      ],
-    },
+    // tabBar: {
+    //   color: '#999999',
+    //   selectedColor: '#000000',
+    //   backgroundColor: '#ffffff',
+    //   borderStyle: 'white',
+    //   list: [
+    //     {
+    //       pagePath: 'pages/schoolservice/index',
+    //       text: '校内服务', // 接入学生相关的服务
+    //       iconPath: 'static/images/tab/school.png',
+    //       selectedIconPath: 'static/images/tab/school_selected.png',
+    //     },
+    //     // {
+    //     //   pagePath: 'pages/daylife/daylife',
+    //     //   text: '敬请期待',
+    //     //   iconPath: 'static/images/tab/daylife.png',
+    //     //   selectedIconPath: 'static/images/tab/daylife_selected.png',
+    //     // },
+    //     // {
+    //     //   pagePath: 'pages/about/index',
+    //     //   text: '关于',
+    //     //   iconPath: 'static/images/tab/about.png',
+    //     //   selectedIconPath: 'static/images/tab/about_selected.png',
+    //     // },
+    //   ],
+    // },
   };
 
   componentDidMount () {}
@@ -67,7 +67,7 @@ class App extends Component {
       <Provider store={store}>
         <About />
       </Provider>
-    )
+    );
   }
 }
 
