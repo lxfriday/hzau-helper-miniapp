@@ -126,6 +126,13 @@
   dependencies:
     less "^3.0.4"
 
+"@tarojs/plugin-sass@^1.2.4":
+  version "1.2.4"
+  resolved "http://registry.npm.taobao.org/@tarojs/plugin-sass/download/@tarojs/plugin-sass-1.2.4.tgz#0186e084ff1f3a0cbbb24025cbdd18b186e5753a"
+  integrity sha1-AYbghP8fOgy7skAly90YsYbldTo=
+  dependencies:
+    node-sass "^4.8.3"
+
 "@tarojs/plugin-uglifyjs@^1.1.9":
   version "1.1.9"
   resolved "http://registry.npm.taobao.org/@tarojs/plugin-uglifyjs/download/@tarojs/plugin-uglifyjs-1.1.9.tgz#ec922b52259edb2f6c9b201fb4bdfda18bf96f30"

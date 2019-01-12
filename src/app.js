@@ -13,8 +13,8 @@ const store = configStore();
 class App extends Component {
   config = {
     pages: [
-      'pages/schoolservice/index', // 校内服务默认页面
       'pages/schoolservice/pe/login/index',
+      'pages/schoolservice/index', // 校内服务默认页面
       'pages/schoolservice/pe/result/index',
       'pages/schoolservice/jwc/login/index',
       'pages/schoolservice/jwc/termgpa/index',
