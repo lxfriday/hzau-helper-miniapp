@@ -2,7 +2,7 @@ import Taro, {Component} from '@tarojs/taro';
 import {View, Text} from '@tarojs/components';
 import {connect} from '@tarojs/redux';
 
-import {add, minus, asyncAdd} from '../../actions/counter';
+import {add, minus, asyncAdd} from '../../../../actions/counter';
 
 import './index.less';
 
@@ -23,12 +23,8 @@ import './index.less';
 class Index extends Component {
 
   config = {
-    navigationBarTitleText: '关于'
+    navigationBarTitleText: '体育成绩'
   };
-
-  componentWillReceiveProps(nextProps) {
-    console.log(this.props, nextProps);
-  }
 
   componentWillUnmount() {
   }
@@ -42,7 +38,11 @@ class Index extends Component {
   render() {
     return (
       <View className='index'>
-        <View><Text>this is about page</Text></View>
+        <View><Text>pe</Text></View>
+        <View><Text>pe</Text></View>
+        <View><Text>pe</Text></View>
+        <View><Text>pe</Text></View>
+        <View><Text>pe</Text></View>
       </View>
     );
   }

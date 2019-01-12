@@ -3,11 +3,12 @@ import { View } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 
 import Panel from '../../components/common/Panel/Panel';
+import routes from '../../utils/routes';
 import { add, minus, asyncAdd } from '../../actions/counter';
 
 import img_pe from  '../../static/images/schoolservice/PE.png';
 import img_jwc_rankexamination from  '../../static/images/schoolservice/jwc_rankexamination.png';
-import jwc_termexamination from  '../../static/images/schoolservice/jwc_termexamination.png';
+import img_jwc_termexamination from  '../../static/images/schoolservice/jwc_termexamination.png';
 import img_jwc_termgpa from  '../../static/images/schoolservice/jwc_termgpa.png';
 import img_dormitory_electricityfees from  '../../static/images/schoolservice/dormitory_electricityfees.png';
 import img_library_search from  '../../static/images/schoolservice/library_search.png';
@@ -33,10 +34,6 @@ class Index extends Component {
   config = {
   };
 
-  componentWillReceiveProps (nextProps) {
-    console.log(this.props, nextProps);
-  }
-
   componentWillUnmount () { }
 
   componentDidShow () { }
@@ -49,7 +46,7 @@ class Index extends Component {
       title: '环湖跑、体测成绩',
       list: [
         {
-          link: '/pages/schoolservice/pe/index',
+          link: routes.pe.login,
           icon: img_pe,
           text: '环湖体测',
         },
@@ -60,18 +57,18 @@ class Index extends Component {
       title: '教务管理系统',
       list: [
         {
-          link: '/pages/schoolservice/jwc/termgpa',
+          link: routes.jwc.termgpa,
           icon: img_jwc_termgpa,
           text: '考试成绩',
         },
         {
-          link: '/pages/schoolservice/jwc/rankexam',
+          link: routes.jwc.rankexam,
           icon: img_jwc_rankexamination,
           text: '等级考试',
         },
         {
-          link: '/pages/schoolservice/jwc/termexam',
-          icon: jwc_termexamination,
+          link: routes.jwc.examtime,
+          icon: img_jwc_termexamination,
           text: '学期考试信息',
         },
       ],
@@ -80,7 +77,7 @@ class Index extends Component {
       title: '图书馆',
       list: [
         {
-          link: '/pages/schoolservice/library/searchbook',
+          link: routes.library.index,
           icon: img_library_search,
           text: '馆藏书搜索',
         },
@@ -91,7 +88,7 @@ class Index extends Component {
       title: '宿舍信息',
       list: [
         {
-          link: '/pages/schoolservice/dormitory/electricityfees',
+          link: routes.dormitory.electricity,
           icon: img_dormitory_electricityfees,
           text: '宿舍电费查询',
         },
