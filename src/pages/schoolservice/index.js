@@ -4,7 +4,6 @@ import { connect } from '@tarojs/redux';
 
 import Panel from '../../components/common/Panel/Panel';
 import routes from '../../utils/routes';
-import { add, minus, asyncAdd } from '../../actions/counter';
 
 import img_pe from  '../../static/images/schoolservice/PE.png';
 import img_jwc_rankexamination from  '../../static/images/schoolservice/jwc_rankexamination.png';
@@ -16,19 +15,7 @@ import img_library_search from  '../../static/images/schoolservice/library_searc
 import './index.less';
 
 
-@connect(({ counter }) => ({
-  counter
-}), (dispatch) => ({
-  add () {
-    dispatch(add());
-  },
-  dec () {
-    dispatch(minus());
-  },
-  asyncAdd () {
-    dispatch(asyncAdd());
-  }
-}))
+@connect(() => ({}))
 class Index extends Component {
 
   config = {

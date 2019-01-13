@@ -2,33 +2,14 @@ import Taro, {Component} from '@tarojs/taro';
 import {View, Text} from '@tarojs/components';
 import {connect} from '@tarojs/redux';
 
-import {add, minus, asyncAdd} from '../../actions/counter';
-
 import './index.less';
 
-
-@connect(({counter}) => ({
-  counter
-}), (dispatch) => ({
-  add() {
-    dispatch(add());
-  },
-  dec() {
-    dispatch(minus());
-  },
-  asyncAdd() {
-    dispatch(asyncAdd());
-  }
-}))
+@connect(() => ({}))
 class Index extends Component {
 
   config = {
-    navigationBarTitleText: '关于'
+    navigationBarTitleText: '关于助手'
   };
-
-  componentWillReceiveProps(nextProps) {
-    console.log(this.props, nextProps);
-  }
 
   componentWillUnmount() {
   }
@@ -41,8 +22,8 @@ class Index extends Component {
 
   render() {
     return (
-      <View className='index'>
-        <View><Text>this is about page</Text></View>
+      <View className='about_index'>
+        <View><Text>关于华中农业大学助手</Text></View>
       </View>
     );
   }

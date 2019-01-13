@@ -4,33 +4,48 @@ import {
   Text,
 } from '@tarojs/components';
 import {connect} from '@tarojs/redux';
-import { AtForm, AtInput, AtButton } from 'taro-ui';
+import { AtForm, AtInput, AtButton, AtSwitch } from 'taro-ui';
+import storage from '../../../../utils/storage';
 
 import './index.less';
 
-@connect(() => ({}))
+@connect(({
+  loading,
+}) => ({ loading }))
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
       password: '',
+      saveInfo: true,
     };
   }
-
 
   config = {
     navigationBarTitleText: '环湖跑体测查询-登录'
   };
 
+  componentDidMount() {
+    this.getLocalData();
+  }
+
   componentWillUnmount() {
+    this.clearData();
   }
 
-  componentDidShow() {
-  }
-
-  componentDidHide() {
-  }
+  // 获取存储在本地的数据
+  getLocalData = () => {
+    Taro.getStorage({
+      key: storage.pe,
+    })
+      .then(({ data }) => {
+        this.setState({
+          username: data.cardID,
+          password: data.password,
+        });
+      });
+  };
 
   handleUsernameChange = (e) => {
     this.setState({ username: e });
@@ -45,10 +60,17 @@ class Index extends Component {
     const {
       username,
       password,
+      saveInfo,
     } = this.state;
-    console.log({
-      username,
-      password,
+    this.props.dispatch({
+      type: 'pe/getPEGradeEffect',
+      payload: {
+        data: {
+          cardID: username,
+          password,
+          saveInfo,
+        },
+      }
     });
   };
 
@@ -60,11 +82,21 @@ class Index extends Component {
     });
   };
 
+  // 开启关闭密码保存
+  handleToggleSavePass = (value) => {
+    this.setState({ saveInfo: value });
+  };
+
   render() {
+    const {
+      loading,
+    } = this.props;
     const {
       username,
       password,
+      saveInfo,
     } = this.state;
+
     return (
       <View className='schoolservice_pe_login'>
         <View className='titleWrapper'>
@@ -89,10 +121,12 @@ class Index extends Component {
             maxlength={50}
             onChange={this.handlePasswordChange}
           />
+          <AtSwitch title='保存用户名密码' checked={saveInfo} onChange={this.handleToggleSavePass} />
         </AtForm>
         <View className='loginButtonWrapper'>
           <AtButton
-            disabled={!(username.length && password.length)}
+            disabled={loading.effects['pe/getPEGradeEffect'] || !(username.length && password.length)}
+            loading={loading.effects['pe/getPEGradeEffect']}
             className='loginButton'
             full
             type='primary'

@@ -2,20 +2,31 @@ import '@tarojs/async-await';
 import Taro, { Component } from '@tarojs/taro';
 import { Provider } from '@tarojs/redux';
 
+
 import About from './pages/about';
-
-import configStore from './store';
-
 import './app.less';
 
-const store = configStore();
+import dva from './dva';
+import models from './models';
+
+const dvaApp = dva.createApp({
+  initialState: {},
+  models: models,
+  // e, dispatch
+  onError(e) {
+    console.log('dva app err');
+    console.log(e);
+  },
+});
+
+const store = dvaApp.getStore();
 
 class App extends Component {
   config = {
     pages: [
-      'pages/schoolservice/pe/login/index',
       'pages/schoolservice/index', // 校内服务默认页面
       'pages/schoolservice/pe/result/index',
+      'pages/schoolservice/pe/login/index',
       'pages/schoolservice/jwc/login/index',
       'pages/schoolservice/jwc/termgpa/index',
       'pages/schoolservice/jwc/rankexam/index',
