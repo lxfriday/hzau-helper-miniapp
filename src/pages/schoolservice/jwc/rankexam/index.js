@@ -1,12 +1,14 @@
 import Taro, {Component} from '@tarojs/taro';
 import {View, Button, Text} from '@tarojs/components';
 import {connect} from '@tarojs/redux';
+import qs from 'query-string';
 
 import './index.less';
+import routes from '../../../../utils/routes';
 
 
-@connect(({counter}) => ({
-  counter
+@connect(({jwcLogin}) => ({
+  jwcLogin,
 }))
 class Index extends Component {
 
@@ -14,12 +16,21 @@ class Index extends Component {
     navigationBarTitleText: '等级考试'
   };
 
-  componentWillReceiveProps(nextProps) {
-    console.log(this.props, nextProps);
+  componentDidMount() {
+    const {
+      jwcLogin: {
+        haveSignIn,
+      },
+    } = this.props;
+    if (!haveSignIn) {
+      Taro.redirectTo({
+        url: routes.jwc.login + '?' + qs.stringify({
+          from: routes.jwc.rankexam,
+        }),
+      });
+    }
   }
 
-  componentWillUnmount() {
-  }
 
   componentDidShow() {
   }

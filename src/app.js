@@ -14,7 +14,10 @@ const dvaApp = dva.createApp({
   models: models,
   // e, dispatch
   onError(e) {
-    console.log('dva app err');
+    Taro.showToast({
+      title: '内部错误',
+      icon: 'none',
+    });
     console.log(e);
   },
 });
@@ -25,12 +28,14 @@ class App extends Component {
   config = {
     pages: [
       'pages/schoolservice/index', // 校内服务默认页面
-      'pages/schoolservice/pe/result/index',
-      'pages/schoolservice/pe/login/index',
+
       'pages/schoolservice/jwc/login/index',
       'pages/schoolservice/jwc/termgpa/index',
       'pages/schoolservice/jwc/rankexam/index',
       'pages/schoolservice/jwc/examtime/index',
+
+      'pages/schoolservice/pe/result/index',
+      'pages/schoolservice/pe/login/index',
       'pages/schoolservice/library/search/index',
       'pages/schoolservice/dormitory/electricity/index',
 

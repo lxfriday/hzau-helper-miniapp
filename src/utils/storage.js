@@ -6,4 +6,5 @@
 
 export default {
   pe: 'pe_userinfo',
+  jwc: 'jwc_userinfo',
 };

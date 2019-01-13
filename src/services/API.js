@@ -11,3 +11,18 @@ export async function PEGradeService(data) {
     data,
   });
 }
+
+export async function jwcVerifyCodeService(data) {
+  return await GET({
+    url: `${serverDomain}/schoolservice/jwcVerifyCode`, // 体育管理系统的成绩查询
+    data,
+  });
+}
+
+// 登录教务管理系统
+export async function jwcLoginService(data) {
+  return await POST({
+    url: `${serverDomain}/schoolservice/jwcSignIn`, // 体育管理系统的成绩查询
+    data,
+  });
+}

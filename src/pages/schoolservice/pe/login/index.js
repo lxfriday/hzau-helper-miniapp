@@ -30,10 +30,6 @@ class Index extends Component {
     this.getLocalData();
   }
 
-  componentWillUnmount() {
-    this.clearData();
-  }
-
   // 获取存储在本地的数据
   getLocalData = () => {
     Taro.getStorage({
