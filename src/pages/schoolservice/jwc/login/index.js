@@ -50,7 +50,8 @@ class Index extends Component {
           username: data.studentId,
           password: data.password,
         });
-      });
+      })
+      .catch(() => {});
   };
 
   // 获取登录时的验证码等信息

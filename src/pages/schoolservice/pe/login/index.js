@@ -40,7 +40,8 @@ class Index extends Component {
           username: data.cardID,
           password: data.password,
         });
-      });
+      })
+      .catch(() => {});
   };
 
   handleUsernameChange = (e) => {
