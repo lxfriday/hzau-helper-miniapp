@@ -50,3 +50,28 @@ export async function jwcExamTimeService(data) {
     data,
   });
 }
+
+// 荟、博的所有宿舍建筑信息
+export async function dormitoryElectricChargeAllBuildingInfoService(data) {
+  return await GET({
+    url: `${serverDomain}/schoolservice/electricChargeAllBuildingInfo`,
+    data,
+  });
+}
+
+// 获取宿舍某一层的所有房间信息
+export async function dormitoryElectricChargeBuildingFloorRoomService(data) {
+  return await POST({
+    url: `${serverDomain}/schoolservice/electricChargeBuildingFloorRoom`,
+    data,
+  });
+}
+
+// 宿舍某个房间的电量查询
+export async function dormitoryElectricChargeRoomChargeService(data) {
+  return await POST({
+    url: `${serverDomain}/schoolservice/electricChargeRoomCharge`,
+    data,
+  });
+}
+

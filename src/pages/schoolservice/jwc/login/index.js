@@ -1,5 +1,5 @@
 import Taro, {Component} from '@tarojs/taro';
-import {View, Text, Image} from '@tarojs/components';
+import {View, Text, Image, Ad} from '@tarojs/components';
 import {connect} from '@tarojs/redux';
 import {AtButton, AtForm, AtInput, AtSwitch} from 'taro-ui';
 import MaskLoading from '../../../../components/common/MaskLoading/MaskLoading';
@@ -167,6 +167,9 @@ class Index extends Component {
           >
             登录
           </AtButton>
+        </View>
+        <View>
+          <Ad unitId='adunit-e5d93002179fb122' />
         </View>
         <MaskLoading isOpened={loading.effects['jwcLogin/getVerifyCodeEffect']} />
       </View>
