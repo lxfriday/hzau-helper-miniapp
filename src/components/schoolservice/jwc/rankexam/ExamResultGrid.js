@@ -1,20 +1,12 @@
 import Taro, {Component} from '@tarojs/taro';
 import {View} from '@tarojs/components';
-import {connect} from '@tarojs/redux';
 import { AtTimeline } from 'taro-ui';
 
 import NoticeTitle from '../../../common/NoticeTitle/NoticeTitle';
 
 import './ExamResultGrid.less';
 
-@connect(() => ({}))
 class ExamResultGrid extends Component {
-  componentDidShow() {
-  }
-
-  componentDidHide() {
-  }
-
   render() {
     const {
       examName,

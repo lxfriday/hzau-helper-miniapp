@@ -42,3 +42,11 @@ export async function jwcRankExamService(data) {
     data,
   });
 }
+
+// 教务管理系统-考试时间地点
+export async function jwcExamTimeService(data) {
+  return await POST({
+    url: `${serverDomain}/schoolservice/jwcTermExamination`,
+    data,
+  });
+}

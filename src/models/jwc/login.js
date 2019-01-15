@@ -82,7 +82,6 @@ export default {
   },
   reducers: {
     saveVerifyCode(state, { payload }) {
-      console.log(payload);
       return {
         ...state,
         ...payload,

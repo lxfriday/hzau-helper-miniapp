@@ -10,9 +10,10 @@ import './index.less';
 import routes from '../../../../utils/routes';
 
 
-@connect(({jwcLogin, jwcRankExam}) => ({
+@connect(({jwcLogin, jwcRankExam, loading}) => ({
   jwcLogin,
   jwcRankExam,
+  loading,
 }))
 class Index extends Component {
   config = {
@@ -35,7 +36,6 @@ class Index extends Component {
       this.getList();
     }
   }
-
 
   // 获取数据列表
   getList = () => {
