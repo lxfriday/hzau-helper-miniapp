@@ -14,7 +14,7 @@ export async function PEGradeService(data) {
 
 export async function jwcVerifyCodeService(data) {
   return await GET({
-    url: `${serverDomain}/schoolservice/jwcVerifyCode`, // 体育管理系统的成绩查询
+    url: `${serverDomain}/schoolservice/jwcVerifyCode`,
     data,
   });
 }
@@ -22,7 +22,23 @@ export async function jwcVerifyCodeService(data) {
 // 登录教务管理系统
 export async function jwcLoginService(data) {
   return await POST({
-    url: `${serverDomain}/schoolservice/jwcSignIn`, // 体育管理系统的成绩查询
+    url: `${serverDomain}/schoolservice/jwcSignIn`,
+    data,
+  });
+}
+
+// 教务管理系统-考试成绩
+export async function jwcTermGPAService(data) {
+  return await POST({
+    url: `${serverDomain}/schoolservice/jwcTermGPA`,
+    data,
+  });
+}
+
+// 教务管理系统-等级考试
+export async function jwcRankExamService(data) {
+  return await POST({
+    url: `${serverDomain}/schoolservice/jwcRankExamination`,
     data,
   });
 }

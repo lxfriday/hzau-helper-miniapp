@@ -27,11 +27,10 @@ const store = dvaApp.getStore();
 class App extends Component {
   config = {
     pages: [
-      'pages/schoolservice/index', // 校内服务默认页面
-
-      'pages/schoolservice/jwc/login/index',
-      'pages/schoolservice/jwc/termgpa/index',
       'pages/schoolservice/jwc/rankexam/index',
+      'pages/schoolservice/index', // 校内服务默认页面
+      'pages/schoolservice/jwc/termgpa/index',
+      'pages/schoolservice/jwc/login/index',
       'pages/schoolservice/jwc/examtime/index',
 
       'pages/schoolservice/pe/result/index',

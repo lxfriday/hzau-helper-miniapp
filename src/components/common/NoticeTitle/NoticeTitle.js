@@ -4,15 +4,18 @@
 import Taro, {Component} from '@tarojs/taro';
 import { connect } from '@tarojs/redux';
 import {View, Text} from '@tarojs/components';
+import PropTypes from 'prop-types';
+
 import theme from '../../../utils/theme';
 
 import './NoticeTitle.less';
 
 @connect(() => ({}))
-class Index extends Component {
+class NoticeTitle extends Component {
   render() {
     const {
       title,
+      rightText,
     } = this.props;
     return (
       <View className='components_common_notice_title' style={{ borderLeftColor: theme.color }}>
@@ -20,10 +23,21 @@ class Index extends Component {
           <Text className='text'>
             {title}
           </Text>
+          <Text className='rightText'>{rightText}</Text>
         </View>
       </View>
     );
   }
 }
 
-export default Index;
+NoticeTitle.propTypes = {
+  title: PropTypes.string,
+  rightText: PropTypes.string,
+};
+
+NoticeTitle.defaultProps = {
+  title: '',
+  rightText: '',
+};
+
+export default NoticeTitle;

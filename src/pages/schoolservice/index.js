@@ -15,7 +15,7 @@ import img_library_search from  '../../static/images/schoolservice/library_searc
 import './index.less';
 
 
-@connect(() => ({}))
+@connect(({ jwcLogin }) => ({ jwcLogin }))
 class Index extends Component {
 
   config = {
@@ -85,18 +85,22 @@ class Index extends Component {
     return (
       <View className='schoolservice_container'>
         <View className='block' />
+        {/* 欢呼跑、体测成绩 */}
         <Panel
           title={PEProps.title}
           list={PEProps.list}
         />
+        {/* 教务管理系统 */}
         <Panel
           title={jwcProps.title}
           list={jwcProps.list}
         />
+        {/* 图书馆  */}
         <Panel
           title={libraryProps.title}
           list={libraryProps.list}
         />
+        {/* 宿舍 */}
         <Panel
           title={dormitoryProps.title}
           list={dormitoryProps.list}

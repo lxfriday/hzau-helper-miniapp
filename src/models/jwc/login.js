@@ -69,6 +69,10 @@ export default {
           });
         }
       } else {
+        // 登录失败，则刷新验证码等校验信息
+        yield put({
+          type: 'getVerifyCodeEffect',
+        });
         Taro.showToast({
           title: '用户名、密码、验证码错误',
           icon: 'none',

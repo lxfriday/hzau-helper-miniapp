@@ -1,17 +1,20 @@
 import Taro, {Component} from '@tarojs/taro';
-import {View, Button, Text} from '@tarojs/components';
+import {View} from '@tarojs/components';
 import {connect} from '@tarojs/redux';
 import qs from 'query-string';
+
+import ExamResultGrid from '../../../../components/schoolservice/jwc/rankexam/ExamResultGrid';
+import MaskLoading from '../../../../components/common/MaskLoading/MaskLoading';
 
 import './index.less';
 import routes from '../../../../utils/routes';
 
 
-@connect(({jwcLogin}) => ({
+@connect(({jwcLogin, jwcRankExam}) => ({
   jwcLogin,
+  jwcRankExam,
 }))
 class Index extends Component {
-
   config = {
     navigationBarTitleText: '等级考试'
   };
@@ -28,9 +31,18 @@ class Index extends Component {
           from: routes.jwc.rankexam,
         }),
       });
+    } else {
+      this.getList();
     }
   }
 
+
+  // 获取数据列表
+  getList = () => {
+    this.props.dispatch({
+      type: 'jwcRankExam/getRankExamListEffect',
+    });
+  };
 
   componentDidShow() {
   }
@@ -39,13 +51,31 @@ class Index extends Component {
   }
 
   render() {
+    const {
+      jwcRankExam: {
+        list,
+      },
+      loading,
+    } = this.props;
+
+    const listNode = list.map((v, i) => (
+      <ExamResultGrid
+        key={i}
+        examName={v.examName}
+        yearTerm={v.yearTerm}
+        date={v.date}
+        examId={v.examId}
+        result={v.result}
+        engListeningResult={v.engListeningResult}
+        engReadingResult={v.engReadingResult}
+        engWritingingResult={v.engWritingingResult}
+      />
+    ));
+
     return (
-      <View className='index'>
-        <Button className='add_btn' onClick={this.props.add}>+</Button>
-        <Button className='dec_btn' onClick={this.props.dec}>-</Button>
-        <Button className='dec_btn' onClick={this.props.asyncAdd}>async</Button>
-        <View><Text>{this.props.counter.num}</Text></View>
-        <View><Text>Hello, World</Text></View>
+      <View className='schoolservice_jwc_rankexam'>
+        {listNode}
+        <MaskLoading isOpened={loading.effects['jwcRankExam/getRankExamListEffect']} />
       </View>
     );
   }

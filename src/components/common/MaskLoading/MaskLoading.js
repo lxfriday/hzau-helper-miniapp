@@ -2,6 +2,7 @@
  * 带有加载效果的全局浮层
  */
 import Taro, {Component} from '@tarojs/taro';
+import PropTypes from 'prop-types';
 import { connect } from '@tarojs/redux';
 import {View} from '@tarojs/components';
 import { AtModal, AtActivityIndicator, AtModalContent } from 'taro-ui';
@@ -9,7 +10,7 @@ import { AtModal, AtActivityIndicator, AtModalContent } from 'taro-ui';
 import './MaskLoading.less';
 
 @connect(() => ({}))
-class Index extends Component {
+class MaskLoading extends Component {
   render() {
     const {
       isOpened,
@@ -31,4 +32,12 @@ class Index extends Component {
   }
 }
 
-export default Index;
+MaskLoading.propTypes = {
+  isOpened: PropTypes.bool,
+};
+
+MaskLoading.defaultProps = {
+  isOpened: false,
+};
+
+export default MaskLoading;

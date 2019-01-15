@@ -4,10 +4,6 @@ import { View, Text, Image } from '@tarojs/components';
 import './PanelItem.less';
 
 class PanelItem extends Component {
-  componentWillReceiveProps (nextProps) {
-    console.log(this.props, nextProps);
-  }
-
   componentWillUnmount () { }
 
   componentDidShow () { }
