@@ -26,12 +26,12 @@ const store = dvaApp.getStore();
 class App extends Component {
   config = {
     pages: [
+      'pages/schoolservice/index', // 校内服务默认页面
+      'pages/schoolservice/zizhu/paymentlist/index', // 现代教育技术中心-历史订单
       'pages/schoolservice/zizhu/normalinfo/index', // 现代教育技术中心-网费信息
       'pages/schoolservice/zizhu/login/index', // 现代教育技术中心-登录
-      'pages/schoolservice/index', // 校内服务默认页面
-      'pages/schoolservice/jwc/login/index', // 教务管理系统-登录
 
-      'pages/schoolservice/zizhu/paymentlist/index', // 现代教育技术中心-历史订单
+      'pages/schoolservice/jwc/login/index', // 教务管理系统-登录
       'pages/schoolservice/dormitory/electricity/index', // 宿舍电量
       'pages/schoolservice/jwc/examtime/index', // 教务管理系统-考试时间
       'pages/schoolservice/jwc/rankexam/index', // 教务管理系统-等级考试

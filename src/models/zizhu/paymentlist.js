@@ -1,45 +1,42 @@
 import Taro from '@tarojs/taro';
 import {
-  zizhuNormalInfoService,
+  zizhuPaymentListService,
 } from '../../services/API';
 
 export default {
-  namespace: 'zizhuNormalInfo',
+  namespace: 'zizhuPaymentList',
   state: {
-    userInfo: [
+    title: [
     ],
-    onlineInfo: [
-    ],
-    productInfo: [
+    record: [
     ],
   },
   effects: {
-    * getZizhuNormalInfoEffect(_, { put, call, select }) {
+    * getZizhuPaymentListEffect(_, { put, call, select }) {
       const zizhuLogin = yield select(state => state.zizhuLogin);
-      const result = yield call(zizhuNormalInfoService, {
+      const result = yield call(zizhuPaymentListService, {
         PHPSESSIDStr: zizhuLogin.PHPSESSIDStr,
         headercsrf: zizhuLogin.headercsrf,
       });
       if(result && !result.errno) {
         const rdata = result.data;
         yield put({
-          type: 'saveZizhuNormalInfo',
+          type: 'saveZizhuPaymentList',
           payload: {
-            userInfo: rdata.userInfo,
-            onlineInfo: rdata.onlineInfo,
-            productInfo: rdata.productInfo,
+            title: rdata.title,
+            record: rdata.record,
           },
         });
       } else {
         Taro.showToast({
-          title: '获取网费信息失败',
+          title: '获取缴费历史信息失败',
           icon: 'none',
         });
       }
     },
   },
   reducers: {
-    saveZizhuNormalInfo(state, { payload }) {
+    saveZizhuPaymentList(state, { payload }) {
       return {
         ...state,
         ...payload,

@@ -7,6 +7,7 @@ import jwcExamTime from './jwc/examtime';
 import dormitoryElectricity from './dormitory/electricity';
 import zizhuLogin from './zizhu/login';
 import zizhuNormalInfo from './zizhu/normalinfo';
+import zizhuPaymentlist from './zizhu/paymentlist';
 
 export default [
   app,
@@ -18,4 +19,5 @@ export default [
   dormitoryElectricity,
   zizhuLogin,
   zizhuNormalInfo,
+  zizhuPaymentlist,
 ];
