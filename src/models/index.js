@@ -8,6 +8,7 @@ import dormitoryElectricity from './dormitory/electricity';
 import zizhuLogin from './zizhu/login';
 import zizhuNormalInfo from './zizhu/normalinfo';
 import zizhuPaymentlist from './zizhu/paymentlist';
+import librarySearchBook from './library/searchBook';
 
 export default [
   app,
@@ -20,4 +21,5 @@ export default [
   zizhuLogin,
   zizhuNormalInfo,
   zizhuPaymentlist,
+  librarySearchBook,
 ];

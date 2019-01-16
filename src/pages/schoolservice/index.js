@@ -82,12 +82,12 @@ class Index extends Component {
       title: '现代教育技术中心',
       list: [
         {
-          link: '',
+          link: routes.zizhu.normalinfo,
           icon: img_zizhu_normalInfo,
           text: '网费查询',
         },
         {
-          link: '',
+          link: routes.zizhu.paymentlist,
           icon: img_zizhu_paymentlist,
           text: '网费订单',
         },
