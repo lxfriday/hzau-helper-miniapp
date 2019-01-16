@@ -23,4 +23,10 @@ export default {
   dormitory: {
     electricity: '/pages/schoolservice/dormitory/electricity/index', // 电费查询
   },
+
+  zizhu: {
+    login: '/pages/schoolservice/zizhu/login/index', // 现代教育技术中心登录页面
+    normalinfo: '/pages/schoolservice/zizhu/normalinfo/index', // 网费查询
+    paymentlist: '/pages/schoolservice/zizhu/paymentlist/index', // 网费查询
+  },
 };

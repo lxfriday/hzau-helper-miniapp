@@ -3,7 +3,10 @@ import { View } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 
 import Panel from '../../components/common/Panel/Panel';
+import NormalPageTitle from '../../components/common/NormalPageTitle/NormalPageTitle';
 import routes from '../../utils/routes';
+import version from '../../configs/version';
+import developer from '../../configs/developer';
 
 import img_pe from  '../../static/images/schoolservice/PE.png';
 import img_jwc_rankexamination from  '../../static/images/schoolservice/jwc_rankexamination.png';
@@ -11,21 +14,14 @@ import img_jwc_termexamination from  '../../static/images/schoolservice/jwc_term
 import img_jwc_termgpa from  '../../static/images/schoolservice/jwc_termgpa.png';
 import img_dormitory_electricityfees from  '../../static/images/schoolservice/dormitory_electricityfees.png';
 import img_library_search from  '../../static/images/schoolservice/library_search.png';
+import img_zizhu_normalInfo from  '../../static/images/schoolservice/zizhu_normalInfo.png';
+import img_zizhu_paymentlist from  '../../static/images/schoolservice/zizhu_paymentlist.png';
 
 import './index.less';
 
 
-@connect(({ jwcLogin }) => ({ jwcLogin }))
+@connect(() => ({}))
 class Index extends Component {
-
-  config = {
-  };
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
 
   render () {
     // 体育管理系统
@@ -82,10 +78,26 @@ class Index extends Component {
       ],
     };
 
+    const zizhuProps = {
+      title: '现代教育技术中心',
+      list: [
+        {
+          link: '',
+          icon: img_zizhu_normalInfo,
+          text: '网费查询',
+        },
+        {
+          link: '',
+          icon: img_zizhu_paymentlist,
+          text: '网费订单',
+        },
+      ],
+    };
+
     return (
       <View className='schoolservice_container'>
         <View className='block' />
-        {/* 欢呼跑、体测成绩 */}
+        {/* 环湖跑、体测成绩 */}
         <Panel
           title={PEProps.title}
           list={PEProps.list}
@@ -100,11 +112,17 @@ class Index extends Component {
           title={libraryProps.title}
           list={libraryProps.list}
         />
+        {/* 现代教育技术中心  */}
+        <Panel
+          title={zizhuProps.title}
+          list={zizhuProps.list}
+        />
         {/* 宿舍 */}
         <Panel
           title={dormitoryProps.title}
           list={dormitoryProps.list}
         />
+        <NormalPageTitle title={version} subTitle={'email: ' + developer.email} />
       </View>
     );
   }

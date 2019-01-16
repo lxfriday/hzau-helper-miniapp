@@ -75,3 +75,67 @@ export async function dormitoryElectricChargeRoomChargeService(data) {
   });
 }
 
+// 获取获取登录现代教育技术中心的验证码等相关的头信息
+export async function zizhuSignInCodeService(data) {
+  return await GET({
+    url: `${serverDomain}/schoolservice/zizhuSignInCode`,
+    data,
+  });
+}
+
+// 登录现代教育技术中心
+export async function zizhuSignInService(data) {
+  return await POST({
+    url: `${serverDomain}/schoolservice/zizhuSignIn`,
+    data,
+  });
+}
+
+// 首页 zizhu.hzau.edu.cn/home 的信息提取 用户信息，在线信息，产品信息
+export async function zizhuNormalInfoService(data) {
+  return await POST({
+    url: `${serverDomain}/schoolservice/zizhuNormalInfo`,
+    data,
+  });
+}
+
+// 缴费清单
+export async function zizhuPaymentListService(data) {
+  return await POST({
+    url: `${serverDomain}/schoolservice/zizhuPaymentList`,
+    data,
+  });
+}
+
+
+// 馆藏系统特色 pathtoken /F/ 后面的一串字符串
+export async function libraryPathTokenService(data) {
+  return await GET({
+    url: `${serverDomain}/schoolservice/libraryPathToken`,
+    data,
+  });
+}
+
+// 缴费清单
+export async function librarySearchBookService(data) {
+  return await POST({
+    url: `${serverDomain}/schoolservice/librarySearchBook`,
+    data,
+  });
+}
+
+// 馆藏书某页书的查询
+export async function libraryPageRecordService(data) {
+  return await POST({
+    url: `${serverDomain}/schoolservice/libraryPageRecord`,
+    data,
+  });
+}
+
+// 馆藏系统搜索推荐
+export async function librarySearchSuggestService(data) {
+  return await POST({
+    url: `${serverDomain}/schoolservice/librarySearchSuggest`,
+    data,
+  });
+}

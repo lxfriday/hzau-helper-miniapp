@@ -171,6 +171,9 @@ class Index extends Component {
         <View>
           <Ad unitId='adunit-e5d93002179fb122' />
         </View>
+        <View style={{textAlign: 'center', marginTop: '8px', fontSize: '30rpx'}}>
+          <Text>使用学校教务管理系统学号密码登录</Text>
+        </View>
         <MaskLoading isOpened={loading.effects['jwcLogin/getVerifyCodeEffect']} />
       </View>
     );

@@ -3,13 +3,11 @@
  */
 import Taro, {Component} from '@tarojs/taro';
 import PropTypes from 'prop-types';
-import { connect } from '@tarojs/redux';
 import {View} from '@tarojs/components';
 import { AtModal, AtActivityIndicator, AtModalContent } from 'taro-ui';
 
 import './MaskLoading.less';
 
-@connect(() => ({}))
 class MaskLoading extends Component {
   render() {
     const {

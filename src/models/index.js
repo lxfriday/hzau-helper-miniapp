@@ -5,6 +5,8 @@ import jwcTermGPA from './jwc/termgpa';
 import jwcRankExam from './jwc/rankexam';
 import jwcExamTime from './jwc/examtime';
 import dormitoryElectricity from './dormitory/electricity';
+import zizhuLogin from './zizhu/login';
+import zizhuNormalInfo from './zizhu/normalinfo';
 
 export default [
   app,
@@ -14,4 +16,6 @@ export default [
   jwcRankExam,
   jwcExamTime,
   dormitoryElectricity,
+  zizhuLogin,
+  zizhuNormalInfo,
 ];

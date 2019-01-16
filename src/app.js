@@ -13,12 +13,11 @@ const dvaApp = dva.createApp({
   initialState: {},
   models: models,
   // e, dispatch
-  onError(e) {
+  onError() {
     Taro.showToast({
       title: '内部错误',
       icon: 'none',
     });
-    console.log(e);
   },
 });
 
@@ -27,18 +26,21 @@ const store = dvaApp.getStore();
 class App extends Component {
   config = {
     pages: [
+      'pages/schoolservice/zizhu/normalinfo/index', // 现代教育技术中心-网费信息
+      'pages/schoolservice/zizhu/login/index', // 现代教育技术中心-登录
       'pages/schoolservice/index', // 校内服务默认页面
-      'pages/schoolservice/dormitory/electricity/index',
-      'pages/schoolservice/jwc/examtime/index',
-      'pages/schoolservice/jwc/rankexam/index',
-      'pages/schoolservice/jwc/termgpa/index',
+      'pages/schoolservice/jwc/login/index', // 教务管理系统-登录
 
-      'pages/schoolservice/jwc/login/index',
-      'pages/schoolservice/pe/result/index',
-      'pages/schoolservice/pe/login/index',
-      'pages/schoolservice/library/search/index',
+      'pages/schoolservice/zizhu/paymentlist/index', // 现代教育技术中心-历史订单
+      'pages/schoolservice/dormitory/electricity/index', // 宿舍电量
+      'pages/schoolservice/jwc/examtime/index', // 教务管理系统-考试时间
+      'pages/schoolservice/jwc/rankexam/index', // 教务管理系统-等级考试
+      'pages/schoolservice/jwc/termgpa/index', // 教务管理系统-考试成绩
 
-      'pages/about/index',
+      'pages/schoolservice/pe/result/index', // 体育管理系统-成绩
+      'pages/schoolservice/pe/login/index', // 体育管理系统-登录
+
+      'pages/schoolservice/library/search/index', // 图书馆-搜索页面
     ],
     window: {
       backgroundTextStyle: 'light',

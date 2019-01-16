@@ -8,4 +8,5 @@ export default {
   pe: 'pe_userinfo',
   jwc: 'jwc_userinfo',
   dormitorySelectedRoomInfo: 'dormitory_selected_room_info',
+  zizhu: 'zizhu_userinfo',
 };
