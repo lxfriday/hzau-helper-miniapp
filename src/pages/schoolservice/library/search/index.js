@@ -117,6 +117,7 @@ class Index extends Component {
     return (
       <ScrollView
         scrollY
+        lowerThreshold={200}
         onScrollToLower={this.handleLoadMore}
         className='schoolservice_library_search'
       >
